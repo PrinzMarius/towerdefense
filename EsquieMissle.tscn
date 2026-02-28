@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5ej2uqr85x07"]
+
+[ext_resource type="Script" uid="uid://v6eicp8ryn8p" path="res://missle.gd" id="1_bensy"]
+[ext_resource type="Material" uid="uid://bttrw7yohq1ai" path="res://EsquieArmMat.tres" id="2_ttpv6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jk8je"]
+material = ExtResource("2_ttpv6")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qpfid"]
+
+[node name="EsquieMissle" type="CharacterBody3D" node_paths=PackedStringArray("HitBoxArea", "HitBox")]
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_max_angle = 3.14159
+script = ExtResource("1_bensy")
+HitBoxArea = NodePath("Modell/HitBoxArea")
+HitBox = NodePath("Modell/HitBoxArea/HitBox")
+
+[node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Modell" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_jk8je")
+
+[node name="HitBoxArea" type="Area3D" parent="Modell"]
+
+[node name="HitBox" type="CollisionShape3D" parent="Modell/HitBoxArea"]
+shape = SubResource("CapsuleShape3D_qpfid")

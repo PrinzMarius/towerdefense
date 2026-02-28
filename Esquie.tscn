@@ -1,0 +1,479 @@
+[gd_scene load_steps=47 format=3 uid="uid://bxnqb38hfijcx"]
+
+[ext_resource type="Material" uid="uid://bttrw7yohq1ai" path="res://EsquieArmMat.tres" id="1_7fwdf"]
+[ext_resource type="Script" uid="uid://ecnvqh252gv0" path="res://esquie.gd" id="1_au8un"]
+[ext_resource type="PackedScene" uid="uid://c5ej2uqr85x07" path="res://EsquieMissle.tscn" id="2_6kw08"]
+[ext_resource type="Script" uid="uid://d2aq00ahvkdq1" path="res://TowerStats.gd" id="4_jlbb6"]
+
+[sub_resource type="Gradient" id="Gradient_tmwru"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.642857)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o17nr"]
+gradient = SubResource("Gradient_tmwru")
+fill = 2
+fill_from = Vector2(0.5, 0.75)
+fill_to = Vector2(0.5, 0.55)
+repeat = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lnfg"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_o17nr")
+
+[sub_resource type="BoxMesh" id="BoxMesh_55uur"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_4lnfg")
+size = Vector3(2.5, 0.1, 2.5)
+
+[sub_resource type="Gradient" id="Gradient_au8un"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.246032)
+colors = PackedColorArray(0.298039, 0.188235, 0.192157, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6kw08"]
+gradient = SubResource("Gradient_au8un")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlbb6"]
+resource_local_to_scene = true
+albedo_texture = SubResource("GradientTexture2D_6kw08")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_udlwd"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_jlbb6")
+top_radius = 0.3
+bottom_radius = 0.0
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xloos"]
+resource_local_to_scene = true
+albedo_color = Color(0.298039, 0.188235, 0.192157, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_50gl4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_xloos")
+radius = 0.75
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vn8hm"]
+resource_local_to_scene = true
+albedo_color = Color(0.298039, 0.188235, 0.192157, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lfrk8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_vn8hm")
+top_radius = 0.25
+height = 1.0
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvrg5"]
+resource_local_to_scene = true
+albedo_color = Color(0.482353, 0, 0.172549, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ht6dn"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_lvrg5")
+size = Vector2(2, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nb53f"]
+resource_local_to_scene = true
+albedo_color = Color(0.733005, 0.733005, 0.733005, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wpdhi"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_nb53f")
+radius = 0.25
+height = 0.25
+radial_segments = 8
+rings = 8
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wt5kw"]
+resource_local_to_scene = true
+albedo_color = Color(0.586526, 0.586526, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_dreg0"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_wt5kw")
+size = Vector3(0.25, 0.25, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udlwd"]
+resource_local_to_scene = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qrgj3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_udlwd")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.025
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0t73"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qf2gc"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_b0t73")
+radius = 0.025
+height = 0.15
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy3gi"]
+resource_local_to_scene = true
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ul2qt"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_uy3gi")
+size = Vector3(0.1, 0.05, 0.1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ja3v5"]
+material = ExtResource("1_7fwdf")
+radius = 0.375
+height = 0.75
+radial_segments = 6
+rings = 4
+
+[sub_resource type="SphereMesh" id="SphereMesh_nklrm"]
+resource_local_to_scene = true
+material = ExtResource("1_7fwdf")
+radius = 0.25
+height = 0.5
+radial_segments = 6
+rings = 4
+
+[sub_resource type="SphereMesh" id="SphereMesh_o1xya"]
+resource_local_to_scene = true
+material = ExtResource("1_7fwdf")
+radius = 0.2
+height = 0.4
+radial_segments = 8
+rings = 4
+
+[sub_resource type="Gradient" id="Gradient_jhw88"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.341317)
+colors = PackedColorArray(0.823529, 0.721569, 0.180392, 1, 0.298039, 0.188235, 0.192157, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hq187"]
+gradient = SubResource("Gradient_jhw88")
+fill_to = Vector2(0, 0.025974)
+repeat = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dv426"]
+albedo_texture = SubResource("GradientTexture2D_hq187")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rpg6g"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_dv426")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.2
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbg0m"]
+albedo_color = Color(0.298039, 0.188235, 0.192157, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8gkrp"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_sbg0m")
+radius = 0.15
+height = 0.3
+radial_segments = 8
+rings = 3
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6kw08"]
+resource_local_to_scene = true
+height = 5.0
+radius = 1.0
+
+[sub_resource type="PackedScene" id="PackedScene_jlbb6"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Control", "Label", "offset_bottom", "size_flags_horizontal", "theme_override_font_sizes/font_size", "text", "vertical_alignment"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 5, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 0),
+"variants": [59.0, 3, 20, "
+", 1],
+"version": 3
+}
+
+[sub_resource type="Gradient" id="Gradient_udlwd"]
+offsets = PackedFloat32Array(0.1, 0.868263)
+colors = PackedColorArray(0, 0, 0.356863, 0.368627, 0.192364, 0.422228, 1, 0.607843)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xloos"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_udlwd")
+width = 1000
+height = 1000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jlbb6"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="Gradient" id="Gradient_jlbb6"]
+offsets = PackedFloat32Array(0.00740741, 0.585185)
+colors = PackedColorArray(0.170841, 0.44624, 2.88785e-07, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_udlwd"]
+gradient = SubResource("Gradient_jlbb6")
+fill = 1
+fill_from = Vector2(0.477387, 0.512563)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50gl4"]
+albedo_color = Color(0.0897086, 0.593559, 9.62615e-07, 1)
+albedo_texture = SubResource("GradientTexture2D_udlwd")
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_vn8hm"]
+material = SubResource("StandardMaterial3D_50gl4")
+inner_radius = 2.9
+outer_radius = 3.0
+rings = 24
+ring_segments = 12
+
+[node name="Esquie" type="CharacterBody3D" node_paths=PackedStringArray("BuildCollisionArea", "TargetingArea", "MissleSpawnPoint", "SelectionRing", "TowerStats")]
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_au8un")
+BuildCollisionArea = NodePath("BuildCollisionArea3D")
+TargetingArea = NodePath("TargetingAreaSignal")
+Missle = ExtResource("2_6kw08")
+MissleSpawnPoint = NodePath("MissleSpawner")
+SelectionRing = NodePath("SelectionRing")
+TowerStats = NodePath("TowerStats")
+BaseAttackDamage = 20.0
+BaseAttackSpeed = 1.0
+AttackRange = 100
+MissleSpeed = 80
+CritDamage = 50
+
+[node name="Pedestal" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_55uur")
+
+[node name="Leg_R" type="MeshInstance3D" parent="Pedestal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.465371, 0.348946)
+mesh = SubResource("CylinderMesh_udlwd")
+skeleton = NodePath("../..")
+
+[node name="Body" type="MeshInstance3D" parent="Pedestal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56651, -5.96046e-08)
+mesh = SubResource("CapsuleMesh_50gl4")
+skeleton = NodePath("../..")
+
+[node name="Leg_L" type="MeshInstance3D" parent="Pedestal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47204, -0.366643)
+mesh = SubResource("CylinderMesh_udlwd")
+skeleton = NodePath("../Leg_R")
+
+[node name="Neck" type="MeshInstance3D" parent="Pedestal"]
+transform = Transform3D(0.557354, 0.830275, 0, -0.830275, 0.557354, 0, -1.77636e-15, 0, 1, 0.605741, 2.42284, -1.77636e-15)
+mesh = SubResource("CylinderMesh_lfrk8")
+skeleton = NodePath("../..")
+
+[node name="Tabard" type="MeshInstance3D" parent="Pedestal/Neck"]
+transform = Transform3D(0.836965, 0.547256, 0, -0.547256, 0.836965, 0, 0, 0, 1, 1.04162, -0.50226, 0)
+mesh = SubResource("PlaneMesh_ht6dn")
+
+[node name="Face" type="MeshInstance3D" parent="Pedestal/Neck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0047555, 0.496763, 0.0011673)
+mesh = SubResource("SphereMesh_wpdhi")
+
+[node name="Star1" type="MeshInstance3D" parent="Pedestal/Neck/Face"]
+transform = Transform3D(0.866025, 0.5, 0, -2.98023e-08, -4.47035e-08, -1, -0.5, 0.866025, -3.78552e-08, 0.153675, 0.0136204, 0.290848)
+mesh = SubResource("PrismMesh_dreg0")
+
+[node name="Star2" type="MeshInstance3D" parent="Pedestal/Neck/Face"]
+transform = Transform3D(-0.866025, 0.5, -2.18557e-08, 0, -4.37114e-08, -1, -0.5, -0.866025, 3.78552e-08, 0.153675, 0.0136204, -0.289238)
+mesh = SubResource("PrismMesh_dreg0")
+
+[node name="Star3" type="MeshInstance3D" parent="Pedestal/Neck/Face"]
+transform = Transform3D(-0.866025, -0.5, 0, 0, -4.47035e-08, -1, 0.5, -0.866025, 3.78552e-08, -0.148328, 0.0130048, -0.289238)
+mesh = SubResource("PrismMesh_dreg0")
+
+[node name="Star4" type="MeshInstance3D" parent="Pedestal/Neck/Face"]
+transform = Transform3D(0.866025, -0.5, 0, 0, -4.47035e-08, -1, 0.5, 0.866025, -3.78552e-08, -0.148, 0.013, 0.289)
+mesh = SubResource("PrismMesh_dreg0")
+
+[node name="Star5" type="MeshInstance3D" parent="Pedestal/Neck/Face"]
+transform = Transform3D(-0.5, -0.866025, 8.9407e-08, -1.49012e-08, 2.98023e-08, -1, 0.866025, -0.5, 2.18557e-08, -0.291542, 0.0114815, -0.165136)
+mesh = SubResource("PrismMesh_dreg0")
+
+[node name="Star6" type="MeshInstance3D" parent="Pedestal/Neck/Face"]
+transform = Transform3D(0.5, -0.866025, 5.96046e-08, -1.49012e-08, 0, -1, 0.866025, 0.5, -2.18557e-08, -0.292, 0.011, 0.165)
+mesh = SubResource("PrismMesh_dreg0")
+
+[node name="EyePlate_R" type="MeshInstance3D" parent="Pedestal/Neck"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 0, 0.722, 0.1)
+mesh = SubResource("CylinderMesh_qrgj3")
+
+[node name="Eye_R" type="MeshInstance3D" parent="Pedestal/Neck/EyePlate_R"]
+transform = Transform3D(1, -2.98023e-08, -1.19209e-07, 3.07811e-08, 0, -1, 1.75904e-08, 1, -2.98023e-08, 0.00782824, 0.00547695, 0.0020662)
+mesh = SubResource("CapsuleMesh_qf2gc")
+
+[node name="Eye_Plate_L" type="MeshInstance3D" parent="Pedestal/Neck"]
+transform = Transform3D(1, 0, 0, 0, 0.939692, 0.34202, 0, -0.34202, 0.939693, 0, 0.722, -0.12)
+mesh = SubResource("CylinderMesh_qrgj3")
+
+[node name="Eye_L" type="MeshInstance3D" parent="Pedestal/Neck/Eye_Plate_L"]
+transform = Transform3D(1, -2.98023e-08, -1.19209e-07, 3.07811e-08, 0, -1, 1.75904e-08, 1, -2.98023e-08, 0.00782824, 0.00547695, 0.0020662)
+mesh = SubResource("CapsuleMesh_qf2gc")
+
+[node name="Nose" type="MeshInstance3D" parent="Pedestal/Neck"]
+transform = Transform3D(-3.25282e-08, 0.973375, -0.229217, 5.2567e-08, -0.229217, -0.973375, -1, -4.37114e-08, -4.37114e-08, 0.11525, 0.669125, 0)
+mesh = SubResource("PrismMesh_ul2qt")
+
+[node name="Arm1_L" type="MeshInstance3D" parent="Pedestal"]
+transform = Transform3D(-1, -6.35192e-08, 6.00671e-08, 0, 0.687088, 0.726575, -8.74228e-08, 0.726575, -0.687088, 0, 2.045, -0.753)
+mesh = SubResource("SphereMesh_ja3v5")
+skeleton = NodePath("../..")
+
+[node name="Arm1_L" type="MeshInstance3D" parent="Pedestal/Arm1_L"]
+transform = Transform3D(1, 0, 0, 0, 0.991452, -0.130474, 0, 0.130474, 0.991452, 0, -0.509455, -0.0201828)
+mesh = SubResource("SphereMesh_nklrm")
+
+[node name="Arm3_L" type="MeshInstance3D" parent="Pedestal/Arm1_L/Arm1_L"]
+transform = Transform3D(1, 0, 0, 0, 0.786407, -0.617709, 0, 0.617709, 0.786407, 0, -0.322804, -0.0824238)
+mesh = SubResource("SphereMesh_o1xya")
+
+[node name="Wrist_L" type="MeshInstance3D" parent="Pedestal/Arm1_L/Arm1_L/Arm3_L"]
+transform = Transform3D(1, 0, 0, 0, 0.998532, 0.054166, 0, -0.054166, 0.998532, 0, -0.190547, 0.00168705)
+mesh = SubResource("CylinderMesh_rpg6g")
+
+[node name="Hand_L" type="MeshInstance3D" parent="Pedestal/Arm1_L/Arm1_L/Arm3_L/Wrist_L"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.163702, 0.000609756)
+mesh = SubResource("SphereMesh_8gkrp")
+
+[node name="Arm1_R" type="MeshInstance3D" parent="Pedestal/Arm1_L"]
+transform = Transform3D(-1, 6.35411e-08, -6.00438e-08, -6.35191e-08, -0.0561871, 0.998419, 6.00671e-08, 0.998419, 0.0561871, -1.31655e-07, 1.09409, -1.03484)
+mesh = SubResource("SphereMesh_ja3v5")
+skeleton = NodePath("../../..")
+
+[node name="Arm2_R" type="MeshInstance3D" parent="Pedestal/Arm1_L/Arm1_R"]
+transform = Transform3D(1, 0, 0, 0, 0.991452, -0.130474, 0, 0.130474, 0.991452, 0, -0.509455, -0.0201828)
+mesh = SubResource("SphereMesh_nklrm")
+
+[node name="Arm3_R" type="MeshInstance3D" parent="Pedestal/Arm1_L/Arm1_R/Arm2_R"]
+transform = Transform3D(1, 0, 0, 0, 0.786407, -0.617709, 0, 0.617709, 0.786407, 0, -0.322804, -0.0824238)
+mesh = SubResource("SphereMesh_o1xya")
+
+[node name="Wrist_R" type="MeshInstance3D" parent="Pedestal/Arm1_L/Arm1_R/Arm2_R/Arm3_R"]
+transform = Transform3D(1, 0, 0, 0, 0.998532, 0.054166, 0, -0.054166, 0.998532, 0, -0.190547, 0.00168705)
+mesh = SubResource("CylinderMesh_rpg6g")
+
+[node name="Hand_R" type="MeshInstance3D" parent="Pedestal/Arm1_L/Arm1_R/Arm2_R/Arm3_R/Wrist_R"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.163702, 0.000609756)
+mesh = SubResource("SphereMesh_8gkrp")
+
+[node name="TargetingAreaSignal" type="Area3D" parent="."]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
+
+[node name="TargetingArea" type="CollisionShape3D" parent="TargetingAreaSignal"]
+shape = SubResource("CylinderShape3D_6kw08")
+debug_color = Color(0.454756, 0.422128, 1.92523e-07, 1)
+
+[node name="MissleSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0265756, 5.4965, -2.27859)
+
+[node name="TowerStats" type="Control" parent="." node_paths=PackedStringArray("Name1Grid", "Value1Grid", "Name2Grid", "Value2Grid", "Name3Grid", "Value3Grid", "Background")]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 140.0
+offset_right = 180.0
+offset_bottom = 40.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("4_jlbb6")
+Name1Grid = NodePath("GridContainer2/GridAttackDamage/Names1")
+Value1Grid = NodePath("GridContainer2/GridAttackDamage/Values1Container")
+Name2Grid = NodePath("GridContainer2/GridSpell/Names2")
+Value2Grid = NodePath("GridContainer2/GridSpell/Values2Container")
+Name3Grid = NodePath("GridContainer2/GridDocs/Names3")
+Value3Grid = NodePath("GridContainer2/GridDocs/Values3Container")
+LabelScene = SubResource("PackedScene_jlbb6")
+Background = NodePath("Background")
+
+[node name="GridContainer2" type="GridContainer" parent="TowerStats"]
+layout_mode = 2
+offset_top = 4.0
+offset_bottom = 4.0
+columns = 3
+
+[node name="GridAttackDamage" type="GridContainer" parent="TowerStats/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="Names1" type="GridContainer" parent="TowerStats/GridContainer2/GridAttackDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Values1Container" type="GridContainer" parent="TowerStats/GridContainer2/GridAttackDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridSpell" type="GridContainer" parent="TowerStats/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Names2" type="GridContainer" parent="TowerStats/GridContainer2/GridSpell"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Values2Container" type="GridContainer" parent="TowerStats/GridContainer2/GridSpell"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridDocs" type="GridContainer" parent="TowerStats/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="Names3" type="GridContainer" parent="TowerStats/GridContainer2/GridDocs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Values3Container" type="GridContainer" parent="TowerStats/GridContainer2/GridDocs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Background" type="Sprite2D" parent="TowerStats"]
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-16, 13)
+texture = SubResource("GradientTexture2D_xloos")
+
+[node name="BuildCollisionArea3D" type="Area3D" parent="."]
+
+[node name="BuildCollisionShape3D" type="CollisionShape3D" parent="BuildCollisionArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_jlbb6")
+debug_color = Color(0.852638, 0, 0.152545, 1)
+
+[node name="SelectionRing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.103332, 0)
+visible = false
+mesh = SubResource("TorusMesh_vn8hm")

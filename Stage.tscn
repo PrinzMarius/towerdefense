@@ -1,0 +1,307 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1a7cng2ue88n"]
+
+[ext_resource type="PackedScene" uid="uid://bgmqpw2li06e2" path="res://Francois.tscn" id="1_4ubfd"]
+[ext_resource type="Script" uid="uid://dajxk70p88q6i" path="res://Main.gd" id="1_gsj67"]
+[ext_resource type="Script" uid="uid://biua3rx02omws" path="res://FrancoisButton.gd" id="3_d3qrh"]
+[ext_resource type="PackedScene" uid="uid://bxnqb38hfijcx" path="res://Esquie.tscn" id="4_gsj67"]
+[ext_resource type="Script" uid="uid://c6tfr0jbdsaxb" path="res://MainCam.gd" id="5_d3qrh"]
+[ext_resource type="Script" uid="uid://b4eyniit0qx05" path="res://Esquie_Button.gd" id="5_lneo4"]
+[ext_resource type="Script" uid="uid://cbjaf5m5xrw56" path="res://CreateGrid.gd" id="6_5n5ix"]
+[ext_resource type="Script" uid="uid://c4cmcqlsibsmt" path="res://BuildingGrid.gd" id="6_lneo4"]
+[ext_resource type="PackedScene" uid="uid://bdv8fcijfxyxy" path="res://Monoco.tscn" id="8_lneo4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsjio"]
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.0470588, 0.615686, 0.0117647, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_mwpjy"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -126, 0, 0, 0, 0, 0, 0, 0, 0, 126),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5n5ix"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[node name="Stage" type="Node3D"]
+script = ExtResource("1_gsj67")
+Wave1 = ExtResource("1_4ubfd")
+Esquie = ExtResource("4_gsj67")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+use_collision = true
+size = Vector3(256, 10, 256)
+material = SubResource("StandardMaterial3D_gsjio")
+
+[node name="Path0" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+operation = 2
+size = Vector3(20, 9.5, 20)
+
+[node name="0Path1" type="CSGBox3D" parent="CSGBox3D/Path0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+size = Vector3(20, 9.5, 20)
+
+[node name="0Path2" type="CSGBox3D" parent="CSGBox3D/Path0/0Path1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+size = Vector3(20, 9.5, 20)
+
+[node name="0Path3" type="CSGBox3D" parent="CSGBox3D/Path0/0Path1/0Path2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+size = Vector3(20, 9.5, 20)
+
+[node name="0Path4" type="CSGBox3D" parent="CSGBox3D/Path0/0Path1/0Path2/0Path3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+size = Vector3(20, 9.5, 20)
+
+[node name="0Path5" type="CSGBox3D" parent="CSGBox3D/Path0/0Path1/0Path2/0Path3/0Path4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+size = Vector3(20, 9.5, 20)
+
+[node name="0Path6" type="CSGBox3D" parent="CSGBox3D/Path0/0Path1/0Path2/0Path3/0Path4/0Path5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+size = Vector3(20, 9.5, 20)
+
+[node name="180Path1" type="CSGBox3D" parent="CSGBox3D/Path0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+size = Vector3(20, 9.5, 20)
+
+[node name="180Path2" type="CSGBox3D" parent="CSGBox3D/Path0/180Path1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+size = Vector3(20, 9.5, 20)
+
+[node name="180Path3" type="CSGBox3D" parent="CSGBox3D/Path0/180Path1/180Path2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+size = Vector3(20, 9.5, 20)
+
+[node name="180Path4" type="CSGBox3D" parent="CSGBox3D/Path0/180Path1/180Path2/180Path3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+size = Vector3(20, 9.5, 20)
+
+[node name="180Path5" type="CSGBox3D" parent="CSGBox3D/Path0/180Path1/180Path2/180Path3/180Path4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+size = Vector3(20, 9.5, 20)
+
+[node name="180Path6" type="CSGBox3D" parent="CSGBox3D/Path0/180Path1/180Path2/180Path3/180Path4/180Path5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+size = Vector3(20, 9.5, 20)
+
+[node name="TestUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FrancoisButton" type="Button" parent="TestUI"]
+layout_mode = 0
+offset_right = 292.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 70
+toggle_mode = true
+text = "Francois"
+script = ExtResource("3_d3qrh")
+
+[node name="Points" type="Node3D" parent="."]
+
+[node name="SpawnPoint1" type="Node3D" parent="Points"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -125)
+
+[node name="CenterPoint" type="Node3D" parent="Points"]
+
+[node name="BuildGridPoint0" type="Node3D" parent="Points" node_paths=PackedStringArray("IllegalAreaParent", "View")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 10, -128)
+script = ExtResource("6_lneo4")
+IllegalAreaParent = NodePath("../../CSGBox3D")
+View = NodePath("../../CamNode3D/Camera3D")
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="Timer"]
+process_callback = 0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.967431, 0.253133, 0, -0.253133, 0.967431, 0, 84.7143, 0)
+sky_mode = 1
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_mwpjy")
+
+[node name="CamNode3D" type="Node3D" parent="." node_paths=PackedStringArray("Camera")]
+script = ExtResource("5_d3qrh")
+CameraSpeed = 10
+Camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="CamNode3D"]
+transform = Transform3D(-1, 6.43025e-14, 8.74228e-08, 5.10978e-08, 0.811401, 0.58449, -7.09349e-08, 0.58449, -0.811401, 0, 73.5525, -134.965)
+keep_aspect = 0
+projection = 1
+fov = 132.6
+size = 256.0
+
+[node name="MainUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="TabContainer" type="TabContainer" parent="MainUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -231.0
+offset_right = 200.0
+grow_vertical = 0
+current_tab = 0
+
+[node name="Test" type="GridContainer" parent="MainUI/TabContainer"]
+layout_mode = 2
+columns = 3
+metadata/_tab_index = 0
+
+[node name="EsquieButton" type="Button" parent="MainUI/TabContainer/Test"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+text = "E"
+script = ExtResource("5_lneo4")
+Tower = ExtResource("4_gsj67")
+
+[node name="MonocoButton" type="Button" parent="MainUI/TabContainer/Test"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "2"
+script = ExtResource("5_lneo4")
+Tower = ExtResource("8_lneo4")
+
+[node name="TestButton2" type="Button" parent="MainUI/TabContainer/Test"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "3"
+
+[node name="TestButton3" type="Button" parent="MainUI/TabContainer/Test"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "4"
+
+[node name="TestButton4" type="Button" parent="MainUI/TabContainer/Test"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "5"
+
+[node name="TestButton5" type="Button" parent="MainUI/TabContainer/Test"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "6"
+
+[node name="TestButton6" type="Button" parent="MainUI/TabContainer/Test"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "7"
+
+[node name="TestButton7" type="Button" parent="MainUI/TabContainer/Test"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8"
+
+[node name="TestButton8" type="Button" parent="MainUI/TabContainer/Test"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "9"
+
+[node name="Test2" type="GridContainer" parent="MainUI/TabContainer"]
+visible = false
+layout_mode = 2
+columns = 3
+metadata/_tab_index = 1
+
+[node name="EsquieButton" type="Button" parent="MainUI/TabContainer/Test2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+text = "E"
+script = ExtResource("5_lneo4")
+Tower = ExtResource("4_gsj67")
+
+[node name="TestButton" type="Button" parent="MainUI/TabContainer/Test2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "2"
+script = ExtResource("5_lneo4")
+Tower = ExtResource("4_gsj67")
+
+[node name="TestButton2" type="Button" parent="MainUI/TabContainer/Test2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "3"
+
+[node name="TestButton3" type="Button" parent="MainUI/TabContainer/Test2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "4"
+
+[node name="TestButton4" type="Button" parent="MainUI/TabContainer/Test2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "5"
+
+[node name="TestButton5" type="Button" parent="MainUI/TabContainer/Test2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "6"
+
+[node name="TestButton6" type="Button" parent="MainUI/TabContainer/Test2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "7"
+
+[node name="TestButton7" type="Button" parent="MainUI/TabContainer/Test2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "8"
+
+[node name="TestButton8" type="Button" parent="MainUI/TabContainer/Test2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "9"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.2, 0)
+pixel_size = 0.1
+texture = SubResource("ViewportTexture_5n5ix")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+size = Vector2i(257, 257)
+
+[node name="Node2D" type="Node2D" parent="Sprite3D/SubViewport"]
+script = ExtResource("6_5n5ix")
+
+[connection signal="TowerBuilt" from="Points/BuildGridPoint0" to="." method="_on_node_3d_tower_built"]
+[connection signal="timeout" from="Timer/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

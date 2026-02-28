@@ -1,0 +1,897 @@
+[gd_scene load_steps=74 format=3 uid="uid://bdv8fcijfxyxy"]
+
+[ext_resource type="Script" uid="uid://bx371sh1ap7qi" path="res://monoco.gd" id="1_tfdfg"]
+[ext_resource type="Script" uid="uid://d2aq00ahvkdq1" path="res://TowerStats.gd" id="4_c4ekn"]
+
+[sub_resource type="Gradient" id="Gradient_tmwru"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.642857)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o17nr"]
+gradient = SubResource("Gradient_tmwru")
+fill = 2
+fill_from = Vector2(0.5, 0.75)
+fill_to = Vector2(0.5, 0.55)
+repeat = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lnfg"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_o17nr")
+
+[sub_resource type="BoxMesh" id="BoxMesh_55uur"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_4lnfg")
+size = Vector3(2.5, 0.1, 2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtw8c"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qtw8c"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_qtw8c")
+height = 0.5
+radial_segments = 12
+rings = 12
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3tgyc"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_li1f3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_3tgyc")
+size = Vector3(0.3, 0.1, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_punsy"]
+resource_local_to_scene = true
+albedo_color = Color(0.439049, 0.439049, 0.439049, 1)
+metallic = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_c4ekn"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_punsy")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1or4f"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_umla4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_1or4f")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.5
+radial_segments = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5k4x"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.164667, 0.1292, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wfx6s"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_e5k4x")
+bottom_radius = 0.6
+height = 1.0
+radial_segments = 24
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gfoc"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0.920833, 0.81, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1nvnf"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_0gfoc")
+radial_segments = 24
+rings = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7br8"]
+resource_local_to_scene = true
+albedo_color = Color(0.19, 0.160708, 0.1197, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fs26s"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_b7br8")
+size = Vector3(0.1, 0.4, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6bqf"]
+resource_local_to_scene = true
+albedo_color = Color(0.19, 0.160708, 0.1197, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j4uif"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_h6bqf")
+size = Vector3(0.1, 0.6, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kdvo"]
+resource_local_to_scene = true
+albedo_color = Color(0.19, 0.160708, 0.1197, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1n4x1"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_2kdvo")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4uy3x"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0.920833, 0.81, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_degii"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_4uy3x")
+radius = 0.345
+height = 1.115
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8wkj"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_nyxd6"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_a8wkj")
+size = Vector3(0.3, 0.1, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dypi7"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.658824, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bym8s"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_dypi7")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0glju"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.658824, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_ujrnw"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_0glju")
+left_to_right = 1.0
+size = Vector3(0.11, 0.04, 0.04)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmnn7"]
+resource_local_to_scene = true
+albedo_color = Color(0.658824, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h7edx"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_pmnn7")
+radius = 0.005
+height = 0.05
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ynty2"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.160708, 0.1197, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7jx3h"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ynty2")
+size = Vector3(0.1, 0.8, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_60em4"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.160708, 0.1197, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ywgwj"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_60em4")
+size = Vector3(0.1, 0.4, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpaq8"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dfsxe"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_tpaq8")
+radius = 0.2
+height = 0.4
+radial_segments = 12
+rings = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hjswf"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mbb7s"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_hjswf")
+top_radius = 0.12
+bottom_radius = 0.12
+height = 0.84
+radial_segments = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcaw2"]
+resource_local_to_scene = true
+albedo_color = Color(0.439049, 0.439049, 0.439049, 1)
+metallic = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sr3gg"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gcaw2")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.05
+radial_segments = 12
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sw33p"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ukcrd"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_sw33p")
+top_radius = 0.07
+bottom_radius = 0.1
+height = 1.0
+radial_segments = 12
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4l27"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wvusy"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_s4l27")
+radius = 0.15
+height = 0.3
+radial_segments = 12
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4q77"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ef8vx"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_a4q77")
+radius = 0.05
+height = 3.7
+radial_segments = 6
+rings = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lf5a0"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1kyg3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_lf5a0")
+radius = 0.05
+height = 0.425
+radial_segments = 6
+rings = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13e6w"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_arpf3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_13e6w")
+radius = 0.04
+height = 0.2
+radial_segments = 12
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_slfp0"]
+resource_local_to_scene = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.19, 0.174958, 0.1539, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kwhsl"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_slfp0")
+top_radius = 0.05
+bottom_radius = 0.03
+height = 0.1
+radial_segments = 12
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_syxft"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.32, 0.23936, 0.1184, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ai0l0"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_syxft")
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4s17h"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.44, 0.44, 0.242, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a364p"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_4s17h")
+radius = 0.1
+height = 0.5
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2l0h5"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.44, 0.44, 0.242, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a7leo"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_2l0h5")
+top_radius = 0.1
+bottom_radius = 0.2
+height = 0.2
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yw05a"]
+resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.44, 0.44, 0.242, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_6f2k4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_yw05a")
+top_radius = 0.2
+bottom_radius = 0.3
+height = 0.4
+radial_segments = 8
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6kw08"]
+resource_local_to_scene = true
+height = 5.0
+radius = 1.0
+
+[sub_resource type="PackedScene" id="PackedScene_jlbb6"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Control", "Label", "offset_bottom", "size_flags_horizontal", "theme_override_font_sizes/font_size", "text", "vertical_alignment"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 5, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 0),
+"variants": [59.0, 3, 20, "
+", 1],
+"version": 3
+}
+
+[sub_resource type="Gradient" id="Gradient_udlwd"]
+offsets = PackedFloat32Array(0.1, 0.868263)
+colors = PackedColorArray(0, 0, 0.356863, 0.368627, 0.192364, 0.422228, 1, 0.607843)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xloos"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_udlwd")
+width = 1000
+height = 1000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jlbb6"]
+size = Vector3(5, 5.78918, 5)
+
+[sub_resource type="Gradient" id="Gradient_jlbb6"]
+offsets = PackedFloat32Array(0.00740741, 0.585185)
+colors = PackedColorArray(0.170841, 0.44624, 2.88785e-07, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_udlwd"]
+gradient = SubResource("Gradient_jlbb6")
+fill = 1
+fill_from = Vector2(0.477387, 0.512563)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50gl4"]
+albedo_color = Color(0.0897086, 0.593559, 9.62615e-07, 1)
+albedo_texture = SubResource("GradientTexture2D_udlwd")
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_vn8hm"]
+material = SubResource("StandardMaterial3D_50gl4")
+inner_radius = 2.9
+outer_radius = 3.0
+rings = 24
+ring_segments = 12
+
+[node name="Monoco" type="CharacterBody3D" node_paths=PackedStringArray("BuildCollisionArea", "TargetingArea", "MissleSpawnPoint", "SelectionRing", "TowerStats")]
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_tfdfg")
+BuildCollisionArea = NodePath("BuildCollisionArea3D")
+TargetingArea = NodePath("TargetingArea")
+MissleSpawnPoint = NodePath("MissleSpawner")
+SelectionRing = NodePath("SelectionRing")
+TowerStats = NodePath("TowerStats")
+BaseAttackSpeed = 0.7
+AttackRange = 100
+MissleSpeed = 200
+CritDamage = 50
+
+[node name="Pedestal" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_55uur")
+
+[node name="Pivot" type="Node3D" parent="Pedestal"]
+transform = Transform3D(0.77, 0, 0, 0, 0.77, 0, 0, 0, 0.77, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0.241341, 0.029, 0.219326)
+mesh = SubResource("SphereMesh_qtw8c")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pedestal/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0413409, 0.155, 0.269283)
+mesh = SubResource("BoxMesh_li1f3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+mesh = SubResource("BoxMesh_li1f3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D2/MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0961175, 0.0444579, 0.0498008)
+mesh = SubResource("CylinderMesh_c4ekn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D2/MeshInstance3D2/MeshInstance3D"]
+transform = Transform3D(1, -8.47033e-22, -7.10543e-15, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.98023e-08, -0.337043)
+mesh = SubResource("CylinderMesh_umla4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D2/MeshInstance3D2/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 1.06581e-14, -4.23516e-22, 0, -4.37114e-08, 0.999999, 0, -0.999999, -4.37114e-08, 0, -0.345, 0)
+mesh = SubResource("CylinderMesh_c4ekn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D2/MeshInstance3D2/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, -1.27055e-21, -7.10543e-15, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -5.96046e-08, -0.301241)
+mesh = SubResource("CylinderMesh_umla4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pedestal/Pivot"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.25, 0.241341, 0.029, -0.280674)
+mesh = SubResource("SphereMesh_qtw8c")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pedestal/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0413409, 0.155, -0.230245)
+mesh = SubResource("BoxMesh_li1f3")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+mesh = SubResource("BoxMesh_li1f3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D4/MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0961175, 0.0444579, 0.0498008)
+mesh = SubResource("CylinderMesh_c4ekn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D4/MeshInstance3D2/MeshInstance3D"]
+transform = Transform3D(1, -8.47033e-22, -7.10543e-15, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -2.98023e-08, -0.337043)
+mesh = SubResource("CylinderMesh_umla4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D4/MeshInstance3D2/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 1.06581e-14, -6.35275e-22, 0, -4.37114e-08, 0.999999, 0, -0.999999, -4.37114e-08, -2.32831e-10, -0.345, -0.00457001)
+mesh = SubResource("CylinderMesh_c4ekn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D4/MeshInstance3D2/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, -1.27055e-21, -7.10543e-15, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -5.96046e-08, -0.301241)
+mesh = SubResource("CylinderMesh_umla4")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pedestal/Pivot"]
+transform = Transform3D(0.65, 0, 0, 0, 1, 0, 0, 0, 1, -0.0586591, 1.62144, -0.0306737)
+mesh = SubResource("CylinderMesh_wfx6s")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81427, 0)
+mesh = SubResource("CapsuleMesh_1nvnf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(-0.957812, 0, 0.287394, 0, 1, 0, -0.287394, 0, -0.957812, 0.530175, -0.316798, 0.140603)
+mesh = SubResource("BoxMesh_fs26s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(0.917858, 0, -0.396908, 0, 0.999999, 0, 0.396908, 0, 0.917859, 0.062302, -0.0997026, -0.257706)
+mesh = SubResource("BoxMesh_j4uif")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(0.867436, 0, -0.497549, 0, 1, 0, 0.497549, 0, 0.867436, 0.074478, 0.096283, -0.244971)
+mesh = SubResource("BoxMesh_fs26s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(0.915291, 0, -0.402795, 0, 1, 0, 0.402795, 0, 0.915291, 0.0654813, -0.0997026, -0.240244)
+mesh = SubResource("BoxMesh_j4uif")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(-0.955634, 0, 0.294557, 0, 1, 0, 0.294557, 0, 0.955634, 0.53, -0.317, -0.137269)
+mesh = SubResource("BoxMesh_fs26s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D2"]
+transform = Transform3D(0.917858, 0, -0.396908, 0, 0.999999, 0, 0.396908, 0, 0.917859, 0.062302, -0.0997026, -0.257706)
+mesh = SubResource("BoxMesh_j4uif")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D2/MeshInstance3D"]
+transform = Transform3D(0.867436, 0, -0.497549, 0, 1, 0, 0.497549, 0, 0.867436, 0.074478, 0.096283, -0.244971)
+mesh = SubResource("BoxMesh_fs26s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D2/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(0.915291, 0, -0.402795, 0, 1, 0, 0.402795, 0, 0.915291, 0.0654813, -0.0997026, -0.240244)
+mesh = SubResource("BoxMesh_j4uif")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(0.999675, 8.73944e-08, -0.0254964, -8.74228e-08, 1, 0, -0.0254964, -2.22896e-09, -0.999675, -0.544099, -0.316798, -0.00206997)
+mesh = SubResource("BoxMesh_fs26s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D3"]
+transform = Transform3D(0.917858, 0, -0.396908, 0, 0.999999, 0, 0.396908, 0, 0.917859, 0.062302, -0.0997026, -0.257706)
+mesh = SubResource("BoxMesh_j4uif")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D3/MeshInstance3D"]
+transform = Transform3D(0.867436, 0, -0.497549, 0, 1, 0, 0.497549, 0, 0.867436, 0.074478, 0.096283, -0.244971)
+mesh = SubResource("BoxMesh_fs26s")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(0.92768, 1.50947e-07, -0.373376, -1.38593e-07, 0.999999, 5.99314e-08, 0.373377, -3.84984e-09, 0.927681, -0.488388, -0.416501, -0.26128)
+mesh = SubResource("BoxMesh_j4uif")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D5"]
+transform = Transform3D(0.867436, 0, -0.497549, -7.10543e-15, 1, 0, 0.497549, 3.55271e-15, 0.867436, 0.0359213, 0.096283, -0.229453)
+mesh = SubResource("BoxMesh_fs26s")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -6.72483e-08, 2.90923e-14, -5.50671e-14, -4.37114e-08, -0.6, 5.82147e-08, 1, -2.62268e-08, -0.607172, 0.178774, 1.25511e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.768629, 0.23122, 3.7766e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.624783, 0.28814, 7.16554e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.800205, 0.348702, 6.66712e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.615361, 0.40656, 7.19231e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.762612, 0.49072, 6.77393e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.938529, 0.434394, 6.27411e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.956322, 0.552622, 6.22355e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.612315, 0.575753, 7.20096e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.792227, 0.616876, 6.68979e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.993886, 0.669564, 6.11683e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.616269, 0.692696, 7.18973e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, -9.01732e-08, 4.54894e-14, -8.17124e-14, -4.37114e-08, -0.6, 8.80171e-08, 1, -2.62268e-08, -0.817928, 0.729963, 6.61677e-08)
+mesh = SubResource("CylinderMesh_1n4x1")
+
+[node name="MeshInstance3D18" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.407998, 0.701303, 1.15922e-08)
+mesh = SubResource("CapsuleMesh_degii")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D18"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0.373944, 0, 1.06247e-08)
+mesh = SubResource("PrismMesh_nyxd6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D18/MeshInstance3D"]
+transform = Transform3D(-0.803223, 0.595678, -7.88214e-08, -0.595678, -0.803223, -2.60379e-08, -7.88214e-08, 2.60379e-08, 1, -0.0767289, 0, -0.127748)
+mesh = SubResource("CylinderMesh_bym8s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D18/MeshInstance3D"]
+transform = Transform3D(-0.838671, -0.544639, 0, 0.544639, -0.83867, 0, 0, 0, 1, 0.0787051, 0, -0.106713)
+mesh = SubResource("CylinderMesh_bym8s")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D18/MeshInstance3D"]
+transform = Transform3D(0.7621, -0.307042, 0.570025, -0.528727, 0.213019, 0.821627, -0.3737, -0.92755, -5.70935e-08, 0.0712743, 0, -0.179456)
+mesh = SubResource("PrismMesh_ujrnw")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D/MeshInstance3D18/MeshInstance3D"]
+transform = Transform3D(-0.507793, -0.756759, -0.411658, 0.830382, -0.557194, -1.83545e-08, -0.229373, -0.341833, 0.911339, -0.0543063, 0.0226513, -0.177421)
+mesh = SubResource("CapsuleMesh_h7edx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.466, 1.2, -0.23)
+mesh = SubResource("BoxMesh_7jx3h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D2"]
+transform = Transform3D(0.242074, -0.970257, -2.15345e-08, 0.970258, 0.242074, 2.75674e-08, -2.15345e-08, -2.75674e-08, 1, -0.188819, -0.298061, 0)
+mesh = SubResource("BoxMesh_ywgwj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D2/MeshInstance3D"]
+transform = Transform3D(0.81378, 0.581172, -5.29091e-09, -0.581172, 0.813781, -1.65125e-08, -5.29095e-09, 1.65125e-08, 1, 0.106063, 0.330005, -4.47035e-08)
+mesh = SubResource("BoxMesh_ywgwj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D2/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(0.913303, 0.407278, -2.46324e-09, -0.407279, 0.913303, -1.15718e-08, -2.46326e-09, 1.15718e-08, 1, 0.0745702, 0.364518, -2.98023e-08)
+mesh = SubResource("BoxMesh_ywgwj")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.466233, 1.19966, 0.230073)
+mesh = SubResource("BoxMesh_7jx3h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D3"]
+transform = Transform3D(0.242074, -0.970257, -2.15345e-08, 0.970258, 0.242074, 2.75674e-08, -2.15345e-08, -2.75674e-08, 1, -0.215585, -0.298061, 0)
+mesh = SubResource("BoxMesh_ywgwj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D3/MeshInstance3D"]
+transform = Transform3D(0.81378, 0.581172, -5.29091e-09, -0.581172, 0.813781, -1.65125e-08, -5.29095e-09, 1.65125e-08, 1, 0.106063, 0.330005, -4.47035e-08)
+mesh = SubResource("BoxMesh_ywgwj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D5/MeshInstance3D3/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(0.913303, 0.407278, -2.46324e-09, -0.407279, 0.913303, -1.15718e-08, -2.46326e-09, 1.15718e-08, 1, 0.0745702, 0.364518, -2.98023e-08)
+mesh = SubResource("BoxMesh_ywgwj")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Pedestal/Pivot"]
+transform = Transform3D(0.752668, 0, 0.6584, 0, 1, 0, -0.6584, 0, 0.752668, -0.0586591, 3.23977, 0.470601)
+mesh = SubResource("SphereMesh_dfsxe")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6"]
+transform = Transform3D(0.942938, -0.231462, 0.239359, -0.0977115, 0.494862, 0.863461, -0.318308, -0.837578, 0.444007, 0.0959513, -0.194501, 0.314388)
+mesh = SubResource("CylinderMesh_mbb7s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.41, 0)
+mesh = SubResource("CylinderMesh_sr3gg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(2.98023e-08, -0.880477, 0.474088, 1, 1.49012e-07, -1.11759e-08, 0, 0.474088, 0.880477, -0.528472, 0.0130325, 0.280226)
+mesh = SubResource("CylinderMesh_ukcrd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+mesh = SubResource("SphereMesh_wvusy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(0.996171, 0.0874078, -0.00185275, 0.000718415, -0.0293774, -0.999568, -0.0874244, 0.99574, -0.0293277, -0.084285, 0.0338708, -0.998539)
+mesh = SubResource("CapsuleMesh_ef8vx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 1.49012e-07, -2.23517e-08, -2.79397e-09, -0.34202, -0.939693, 0, 0.939693, -0.34202, 0.0107917, 1.8358, -0.0892125)
+mesh = SubResource("CapsuleMesh_1kyg3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 2.98023e-08, 1.19209e-07, 2.98023e-08, -0.139173, -0.990268, 7.45058e-09, 0.990268, -0.139173, -0.00280479, -0.142027, 0.109128)
+mesh = SubResource("CapsuleMesh_arpf3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, -8.9407e-08, 0, 0, 0.113203, -0.993572, 0, 0.993572, 0.113203, -0.00167519, 0.0597692, 0.0750158)
+mesh = SubResource("CylinderMesh_kwhsl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, -1.50467e-08, 2.98023e-08, 0, 0.34202, -0.939693, 0, 0.939693, 0.34202, 0, -0.127, -0.251)
+mesh = SubResource("CylinderMesh_ai0l0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, -2.12458e-09, -2.98023e-08, 5.3551e-09, 1, -5.67525e-10, 0, 2.77942e-09, 1, 0, -0.495, 0)
+mesh = SubResource("CapsuleMesh_a364p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 2.64845e-09, 2.98023e-08, 7.5961e-09, 1, -4.65661e-10, 0, -8.99308e-09, 1, 0.00100708, 0.0576503, -0.0030117)
+mesh = SubResource("CylinderMesh_a7leo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D6/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, -1.25146e-09, 0, 4.65661e-10, 1, 2.47383e-10, 0, -3.12866e-09, 1, 0, -0.3, 0)
+mesh = SubResource("CylinderMesh_6f2k4")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Pedestal/Pivot"]
+transform = Transform3D(-0.961419, 0.124623, 0.245241, -0.0580754, 0.779452, -0.623764, -0.268889, -0.613941, -0.742142, -0.0383765, 3.23977, -0.536202)
+mesh = SubResource("SphereMesh_dfsxe")
+skeleton = NodePath("../MeshInstance3D6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D7"]
+transform = Transform3D(0.942938, -0.231462, 0.239359, -0.0977115, 0.494862, 0.863461, -0.318308, -0.837578, 0.444007, 0.096, -0.195, 0.4)
+mesh = SubResource("CylinderMesh_mbb7s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D7/MeshInstance3D"]
+transform = Transform3D(-0.0410647, -0.997533, -0.056944, 0.616503, 0.019553, -0.787111, 0.786282, -0.0674285, 0.614178, 0.00343765, -0.45757, -0.00611854)
+mesh = SubResource("CylinderMesh_sr3gg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D7/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(-2.23517e-08, -0.880477, 0.474088, 1, 5.21541e-08, -1.11759e-08, 1.39698e-08, 0.474088, 0.880477, -0.520948, 0.014153, 0.277066)
+mesh = SubResource("CylinderMesh_ukcrd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal/Pivot/MeshInstance3D7/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, -7.45058e-09, -3.72529e-09, -7.45058e-09, 1, -8.14907e-10, 3.72529e-09, 4.07454e-09, 1, 0.0225315, 0.634735, -0.0131322)
+mesh = SubResource("SphereMesh_wvusy")
+
+[node name="TargetingArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
+
+[node name="TargetingAreaShape" type="CollisionShape3D" parent="TargetingArea"]
+shape = SubResource("CylinderShape3D_6kw08")
+debug_color = Color(0.454756, 0.422128, 1.92523e-07, 1)
+
+[node name="MissleSpawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33326, 4.13, -2.27859)
+
+[node name="TowerStats" type="Control" parent="." node_paths=PackedStringArray("Name1Grid", "Value1Grid", "Name2Grid", "Value2Grid", "Name3Grid", "Value3Grid", "Background")]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 140.0
+offset_right = 180.0
+offset_bottom = 40.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("4_c4ekn")
+Name1Grid = NodePath("GridContainer2/GridAttackDamage/Names1")
+Value1Grid = NodePath("GridContainer2/GridAttackDamage/Values1Container")
+Name2Grid = NodePath("GridContainer2/GridSpell/Names2")
+Value2Grid = NodePath("GridContainer2/GridSpell/Values2Container")
+Name3Grid = NodePath("GridContainer2/GridDocs/Names3")
+Value3Grid = NodePath("GridContainer2/GridDocs/Values3Container")
+LabelScene = SubResource("PackedScene_jlbb6")
+Background = NodePath("Background")
+
+[node name="GridContainer2" type="GridContainer" parent="TowerStats"]
+layout_mode = 2
+offset_top = 4.0
+offset_bottom = 4.0
+columns = 3
+
+[node name="GridAttackDamage" type="GridContainer" parent="TowerStats/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="Names1" type="GridContainer" parent="TowerStats/GridContainer2/GridAttackDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Values1Container" type="GridContainer" parent="TowerStats/GridContainer2/GridAttackDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridSpell" type="GridContainer" parent="TowerStats/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Names2" type="GridContainer" parent="TowerStats/GridContainer2/GridSpell"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Values2Container" type="GridContainer" parent="TowerStats/GridContainer2/GridSpell"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridDocs" type="GridContainer" parent="TowerStats/GridContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
+
+[node name="Names3" type="GridContainer" parent="TowerStats/GridContainer2/GridDocs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Values3Container" type="GridContainer" parent="TowerStats/GridContainer2/GridDocs"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Background" type="Sprite2D" parent="TowerStats"]
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-16, 13)
+texture = SubResource("GradientTexture2D_xloos")
+
+[node name="BuildCollisionArea3D" type="Area3D" parent="."]
+
+[node name="BuildCollisionShape3D" type="CollisionShape3D" parent="BuildCollisionArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89459, 0)
+shape = SubResource("BoxShape3D_jlbb6")
+debug_color = Color(0.852638, 0, 0.152545, 1)
+
+[node name="SelectionRing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.103332, 0)
+visible = false
+mesh = SubResource("TorusMesh_vn8hm")

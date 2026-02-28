@@ -1,0 +1,138 @@
+[gd_scene load_steps=20 format=3 uid="uid://bgmqpw2li06e2"]
+
+[ext_resource type="Script" uid="uid://bftjfximaw6ng" path="res://CreepPathFollow.gd" id="1_03qa5"]
+[ext_resource type="Script" uid="uid://doi8df0p7l2ds" path="res://francois.gd" id="1_qfx1i"]
+[ext_resource type="PackedScene" uid="uid://boo6bxe1yac82" path="res://LoseScreen.tscn" id="2_nqjen"]
+[ext_resource type="PackedScene" uid="uid://lv8s5jyvlvlo" path="res://DamageText.tscn" id="3_buakb"]
+
+[sub_resource type="Gradient" id="Gradient_qfx1i"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(0.302626, 0.246066, 0.0730927, 1, 5.29438e-06, 0.76201, 0.76201, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_03qa5"]
+gradient = SubResource("Gradient_qfx1i")
+width = 20
+height = 20
+fill_from = Vector2(0, 0.357895)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_buakb"]
+diffuse_mode = 3
+albedo_texture = SubResource("GradientTexture2D_03qa5")
+rim = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_nqjen"]
+material = SubResource("StandardMaterial3D_buakb")
+radius = 1.0
+radial_segments = 6
+rings = 3
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kd8yl"]
+diffuse_mode = 3
+albedo_color = Color(0.302626, 0.246066, 0.0730927, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_vc8x5"]
+material = SubResource("StandardMaterial3D_kd8yl")
+size = Vector3(0.6, 0.6, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h60vv"]
+diffuse_mode = 3
+albedo_color = Color(0.422745, 0.347392, 0.117268, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bdcfe"]
+material = SubResource("StandardMaterial3D_h60vv")
+radius = 0.175
+height = 0.125
+radial_segments = 6
+rings = 3
+is_hemisphere = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_om7vc"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_thoip"]
+material = SubResource("StandardMaterial3D_om7vc")
+size = Vector3(0.075, 0.1, 0.025)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_03qa5"]
+height = 10.0
+radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_03qa5"]
+radius = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nqjen"]
+viewport_path = NodePath("Creep/HealthBar3D/HealthBarViewport")
+
+[sub_resource type="Gradient" id="Gradient_om7vc"]
+offsets = PackedFloat32Array(0, 0.75)
+colors = PackedColorArray(1, 0.607843, 0, 1, 0.313726, 0.313726, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_thoip"]
+gradient = SubResource("Gradient_om7vc")
+width = 256
+height = 16
+fill = 2
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[node name="CreepPath" type="PathFollow3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_03qa5")
+LoseScreenScene = ExtResource("2_nqjen")
+
+[node name="Creep" type="CharacterBody3D" parent="." node_paths=PackedStringArray("HealthBar", "Pathtrack")]
+script = ExtResource("1_qfx1i")
+HealthBar = NodePath("HealthBar3D/HealthBarViewport/HealthBar2D")
+Pathtrack = NodePath("..")
+DamageTextScene = ExtResource("3_buakb")
+MovementSpeed = 10
+Armor = 5
+MaxHealth = 100
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Creep"]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0, 0, 0)
+mesh = SubResource("SphereMesh_nqjen")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Creep/MeshInstance3D"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.188455, 0.3, 0.326413)
+mesh = SubResource("PrismMesh_vc8x5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Creep/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.1, 0.49)
+mesh = SubResource("SphereMesh_bdcfe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Creep/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(0.97437, -0.224951, 0, 0.219186, 0.949397, 0.224951, -0.050603, -0.219185, 0.974369, -0.04, 0.06, -0.033)
+mesh = SubResource("BoxMesh_thoip")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Creep/MeshInstance3D/MeshInstance3D/MeshInstance3D"]
+transform = Transform3D(0.97437, 0.224951, 0, -0.219186, 0.949396, 0.224951, 0.050603, -0.219185, 0.974368, 0.04, 0.06, -0.033)
+mesh = SubResource("BoxMesh_thoip")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="TargetingShape" type="CollisionShape3D" parent="Creep"]
+transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 5, 0)
+shape = SubResource("CylinderShape3D_03qa5")
+debug_color = Color(0.945098, 0, 0.411765, 1)
+
+[node name="HitBox" type="CollisionShape3D" parent="Creep"]
+shape = SubResource("SphereShape3D_03qa5")
+debug_color = Color(0, 0.643137, 0.321569, 1)
+
+[node name="HealthBar3D" type="Sprite3D" parent="Creep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15112, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_nqjen")
+
+[node name="HealthBarViewport" type="SubViewport" parent="Creep/HealthBar3D"]
+transparent_bg = true
+size = Vector2i(256, 16)
+
+[node name="HealthBar2D" type="TextureProgressBar" parent="Creep/HealthBar3D/HealthBarViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_thoip")
