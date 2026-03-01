@@ -165,7 +165,7 @@ func _hide_selectionring() -> void:
 		if selected==false:
 			SelectionRing.visible=false
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("click_left"):
 		if hovered:
 			TowerStats.show()

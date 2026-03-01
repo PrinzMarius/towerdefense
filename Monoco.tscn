@@ -469,6 +469,7 @@ rings = 24
 ring_segments = 12
 
 [node name="Monoco" type="CharacterBody3D" node_paths=PackedStringArray("BuildCollisionArea", "TargetingArea", "MissleSpawnPoint", "SelectionRing", "TowerStats")]
+input_ray_pickable = false
 motion_mode = 1
 slide_on_ceiling = false
 script = ExtResource("1_tfdfg")
@@ -895,3 +896,8 @@ debug_color = Color(0.852638, 0, 0.152545, 1)
 transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.103332, 0)
 visible = false
 mesh = SubResource("TorusMesh_vn8hm")
+
+[node name="BuildCollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89459, 0)
+shape = SubResource("BoxShape3D_jlbb6")
+debug_color = Color(0.852638, 0, 0.152545, 1)

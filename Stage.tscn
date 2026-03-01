@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d1a7cng2ue88n"]
+[gd_scene load_steps=21 format=3 uid="uid://d1a7cng2ue88n"]
 
 [ext_resource type="PackedScene" uid="uid://bgmqpw2li06e2" path="res://Francois.tscn" id="1_4ubfd"]
 [ext_resource type="Script" uid="uid://dajxk70p88q6i" path="res://Main.gd" id="1_gsj67"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://b4eyniit0qx05" path="res://Esquie_Button.gd" id="5_lneo4"]
 [ext_resource type="Script" uid="uid://cbjaf5m5xrw56" path="res://CreateGrid.gd" id="6_5n5ix"]
 [ext_resource type="Script" uid="uid://c4cmcqlsibsmt" path="res://BuildingGrid.gd" id="6_lneo4"]
+[ext_resource type="Script" uid="uid://b5i63sryewtah" path="res://tower_container.gd" id="7_uymwg"]
 [ext_resource type="PackedScene" uid="uid://bdv8fcijfxyxy" path="res://Monoco.tscn" id="8_lneo4"]
+[ext_resource type="Script" uid="uid://qryqevwmii6g" path="res://Lifebar.gd" id="9_mk6be"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsjio"]
 diffuse_mode = 3
@@ -23,6 +25,39 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5n5ix"]
+offsets = PackedFloat32Array(0.598592)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mk6be"]
+gradient = SubResource("Gradient_5n5ix")
+width = 512
+height = 32
+fill_from = Vector2(1, 0)
+
+[sub_resource type="Gradient" id="Gradient_uymwg"]
+offsets = PackedFloat32Array(0.211268, 1)
+colors = PackedColorArray(0, 0, 0, 0.705882, 1, 1, 1, 0.498039)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sbwno"]
+gradient = SubResource("Gradient_uymwg")
+width = 512
+height = 32
+fill_from = Vector2(0.4, 1)
+fill_to = Vector2(0, 0.318)
+
+[sub_resource type="Gradient" id="Gradient_ktjup"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.145, 0.95)
+colors = PackedColorArray(0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1wg0b"]
+gradient = SubResource("Gradient_ktjup")
+width = 512
+height = 32
+fill_to = Vector2(0.01, 0)
+repeat = 1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5n5ix"]
 viewport_path = NodePath("Sprite3D/SubViewport")
@@ -99,7 +134,8 @@ offset_bottom = 40.0
 
 [node name="FrancoisButton" type="Button" parent="TestUI"]
 layout_mode = 0
-offset_right = 292.0
+offset_left = 1615.0
+offset_right = 1907.0
 offset_bottom = 104.0
 theme_override_font_sizes/font_size = 70
 toggle_mode = true
@@ -150,22 +186,25 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="TabContainer" type="TabContainer" parent="MainUI"]
+[node name="TowerContainer" type="TabContainer" parent="MainUI"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_top = -231.0
-offset_right = 200.0
-grow_vertical = 0
+offset_left = 32.0
+offset_top = -803.0
+offset_right = 232.0
+offset_bottom = -572.0
+grow_vertical = 2
+rotation = 1.5708
 current_tab = 0
+script = ExtResource("7_uymwg")
 
-[node name="Test" type="GridContainer" parent="MainUI/TabContainer"]
+[node name="El1" type="GridContainer" parent="MainUI/TowerContainer"]
 layout_mode = 2
 columns = 3
 metadata/_tab_index = 0
 
-[node name="EsquieButton" type="Button" parent="MainUI/TabContainer/Test"]
+[node name="EsquieButton" type="Button" parent="MainUI/TowerContainer/El1"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -175,63 +214,63 @@ text = "E"
 script = ExtResource("5_lneo4")
 Tower = ExtResource("4_gsj67")
 
-[node name="MonocoButton" type="Button" parent="MainUI/TabContainer/Test"]
+[node name="MonocoButton" type="Button" parent="MainUI/TowerContainer/El1"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "2"
+text = "M"
 script = ExtResource("5_lneo4")
 Tower = ExtResource("8_lneo4")
 
-[node name="TestButton2" type="Button" parent="MainUI/TabContainer/Test"]
+[node name="TestButton2" type="Button" parent="MainUI/TowerContainer/El1"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "3"
 
-[node name="TestButton3" type="Button" parent="MainUI/TabContainer/Test"]
+[node name="TestButton3" type="Button" parent="MainUI/TowerContainer/El1"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "4"
 
-[node name="TestButton4" type="Button" parent="MainUI/TabContainer/Test"]
+[node name="TestButton4" type="Button" parent="MainUI/TowerContainer/El1"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "5"
 
-[node name="TestButton5" type="Button" parent="MainUI/TabContainer/Test"]
+[node name="TestButton5" type="Button" parent="MainUI/TowerContainer/El1"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "6"
 
-[node name="TestButton6" type="Button" parent="MainUI/TabContainer/Test"]
+[node name="TestButton6" type="Button" parent="MainUI/TowerContainer/El1"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "7"
 
-[node name="TestButton7" type="Button" parent="MainUI/TabContainer/Test"]
+[node name="TestButton7" type="Button" parent="MainUI/TowerContainer/El1"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "8"
 
-[node name="TestButton8" type="Button" parent="MainUI/TabContainer/Test"]
+[node name="TestButton8" type="Button" parent="MainUI/TowerContainer/El1"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "9"
 
-[node name="Test2" type="GridContainer" parent="MainUI/TabContainer"]
+[node name="El2" type="GridContainer" parent="MainUI/TowerContainer"]
 visible = false
 layout_mode = 2
 columns = 3
 metadata/_tab_index = 1
 
-[node name="EsquieButton" type="Button" parent="MainUI/TabContainer/Test2"]
+[node name="EsquieButton" type="Button" parent="MainUI/TowerContainer/El2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -241,7 +280,7 @@ text = "E"
 script = ExtResource("5_lneo4")
 Tower = ExtResource("4_gsj67")
 
-[node name="TestButton" type="Button" parent="MainUI/TabContainer/Test2"]
+[node name="TestButton" type="Button" parent="MainUI/TowerContainer/El2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
@@ -249,47 +288,60 @@ text = "2"
 script = ExtResource("5_lneo4")
 Tower = ExtResource("4_gsj67")
 
-[node name="TestButton2" type="Button" parent="MainUI/TabContainer/Test2"]
+[node name="TestButton2" type="Button" parent="MainUI/TowerContainer/El2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "3"
 
-[node name="TestButton3" type="Button" parent="MainUI/TabContainer/Test2"]
+[node name="TestButton3" type="Button" parent="MainUI/TowerContainer/El2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "4"
 
-[node name="TestButton4" type="Button" parent="MainUI/TabContainer/Test2"]
+[node name="TestButton4" type="Button" parent="MainUI/TowerContainer/El2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "5"
 
-[node name="TestButton5" type="Button" parent="MainUI/TabContainer/Test2"]
+[node name="TestButton5" type="Button" parent="MainUI/TowerContainer/El2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "6"
 
-[node name="TestButton6" type="Button" parent="MainUI/TabContainer/Test2"]
+[node name="TestButton6" type="Button" parent="MainUI/TowerContainer/El2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "7"
 
-[node name="TestButton7" type="Button" parent="MainUI/TabContainer/Test2"]
+[node name="TestButton7" type="Button" parent="MainUI/TowerContainer/El2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "8"
 
-[node name="TestButton8" type="Button" parent="MainUI/TabContainer/Test2"]
+[node name="TestButton8" type="Button" parent="MainUI/TowerContainer/El2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "9"
+
+[node name="Lifebar" type="TextureProgressBar" parent="MainUI"]
+texture_repeat = 1
+layout_mode = 0
+offset_left = 19.0
+offset_top = -1057.0
+offset_right = 531.0
+offset_bottom = -1025.0
+value = 100.0
+texture_under = SubResource("GradientTexture2D_mk6be")
+texture_over = SubResource("GradientTexture2D_sbwno")
+texture_progress = SubResource("GradientTexture2D_1wg0b")
+script = ExtResource("9_mk6be")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.2, 0)
@@ -298,7 +350,7 @@ texture = SubResource("ViewportTexture_5n5ix")
 
 [node name="SubViewport" type="SubViewport" parent="Sprite3D"]
 transparent_bg = true
-size = Vector2i(257, 257)
+size = Vector2i(2570, 2570)
 
 [node name="Node2D" type="Node2D" parent="Sprite3D/SubViewport"]
 script = ExtResource("6_5n5ix")

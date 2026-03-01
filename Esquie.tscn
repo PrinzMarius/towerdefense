@@ -215,9 +215,6 @@ height = 1000
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jlbb6"]
-size = Vector3(5, 5, 5)
-
 [sub_resource type="Gradient" id="Gradient_jlbb6"]
 offsets = PackedFloat32Array(0.00740741, 0.585185)
 colors = PackedColorArray(0.170841, 0.44624, 2.88785e-07, 1, 0, 1, 0, 1)
@@ -241,7 +238,12 @@ outer_radius = 3.0
 rings = 24
 ring_segments = 12
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jlbb6"]
+resource_local_to_scene = true
+size = Vector3(4.9, 5, 4.9)
+
 [node name="Esquie" type="CharacterBody3D" node_paths=PackedStringArray("BuildCollisionArea", "TargetingArea", "MissleSpawnPoint", "SelectionRing", "TowerStats")]
+input_ray_pickable = false
 motion_mode = 1
 slide_on_ceiling = false
 script = ExtResource("1_au8un")
@@ -376,7 +378,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.163702, 0.000609756)
 mesh = SubResource("SphereMesh_8gkrp")
 
 [node name="TargetingAreaSignal" type="Area3D" parent="."]
-transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
 
 [node name="TargetingArea" type="CollisionShape3D" parent="TargetingAreaSignal"]
 shape = SubResource("CylinderShape3D_6kw08")
@@ -466,14 +467,19 @@ visibility_layer = 2
 position = Vector2(-16, 13)
 texture = SubResource("GradientTexture2D_xloos")
 
+[node name="SelectionRing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.103332, 0)
+visible = false
+mesh = SubResource("TorusMesh_vn8hm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_jlbb6")
+debug_color = Color(0.852638, 0, 0.152545, 1)
+
 [node name="BuildCollisionArea3D" type="Area3D" parent="."]
 
 [node name="BuildCollisionShape3D" type="CollisionShape3D" parent="BuildCollisionArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 shape = SubResource("BoxShape3D_jlbb6")
 debug_color = Color(0.852638, 0, 0.152545, 1)
-
-[node name="SelectionRing" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.3, 0, 0, 0, 1, 0, 0.103332, 0)
-visible = false
-mesh = SubResource("TorusMesh_vn8hm")

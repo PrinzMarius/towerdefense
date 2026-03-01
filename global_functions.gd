@@ -4,8 +4,15 @@ extends Node
 @onready var NeutralTable:Array=[1,1.1,1.2,1.3,1.4]
 @onready var TestTable:Array=[2,2.1,2.2,2.3,2.4]
 @onready var DamageTable:Array=[NeutralTable, TestTable]
-@onready var PlayerHealth:int=10
+@onready var PlayerHealth:int=100
 @onready var buildModeOn:bool=false
+
+func _ready() -> void:
+	SignalBus.player_damage.connect(deal_player_damage)
+	
+
+func deal_player_damage(Damage:int)->void:
+	PlayerHealth-=Damage
 
 func get_object_under_mouse(Camera:Camera3D, user:Node)->Dictionary:
 	var mouse_pos:Vector2 = get_viewport().get_mouse_position()

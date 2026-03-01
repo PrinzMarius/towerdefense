@@ -1,16 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://lv8s5jyvlvlo"]
 
 [ext_resource type="Script" uid="uid://c3yxgvf4y04qo" path="res://damage_text.gd" id="1_i8p3k"]
+[ext_resource type="LabelSettings" uid="uid://kmscx7b382n0" path="res://DamageText.tres" id="2_1xq64"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_1xq64"]
 viewport_path = NodePath("DamageTextViewPort")
-
-[sub_resource type="LabelSettings" id="LabelSettings_ibbrn"]
-resource_local_to_scene = true
-font_size = 40
-font_color = Color(0.685733, 8.42288e-07, 3.85046e-07, 1)
-outline_size = 28
-outline_color = Color(0, 0, 0, 1)
 
 [node name="DamageText3D" type="Sprite3D"]
 billboard = 2
@@ -19,7 +13,6 @@ script = ExtResource("1_i8p3k")
 
 [node name="DamageTextViewPort" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(1024, 512)
 
 [node name="DamageText2D" type="Label" parent="DamageTextViewPort"]
 anchors_preset = 8
@@ -34,6 +27,6 @@ offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Test"
-label_settings = SubResource("LabelSettings_ibbrn")
+label_settings = ExtResource("2_1xq64")
 horizontal_alignment = 1
 vertical_alignment = 1

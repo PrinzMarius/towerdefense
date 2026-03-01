@@ -42,25 +42,31 @@ func _physics_process(_delta: float) -> void:
 
 			
 func _input(event: InputEvent) -> void:
-	if BuildIllegal==false and buildModeOn:
+	if buildModeOn:
 		if event.is_action_pressed("click_left"):
-			var buildLocation:Vector3 = FloatTower.global_position
-			TowerBuilt.emit(ActiveBuildTower,buildLocation)
-			buildModeOn=false
-			FloatTower.queue_free()
+			if BuildIllegal==false:
+				var buildLocation:Vector3 = FloatTower.global_position
+				TowerBuilt.emit(ActiveBuildTower,buildLocation)
+				_build_mode_end()
 		elif event.is_action_pressed("click_right"):
-			buildModeOn=false
-			FloatTower.queue_free()
+			_build_mode_end()
+
+func _build_mode_end()->void:
+	buildModeOn=false
+	FloatTower.queue_free()
+	$"../../Sprite3D/SubViewport/Node2D".hide()
+	
 	
 func _build_mode_start(Tower:PackedScene) -> void:
 	buildModeOn=true
+	$"../../Sprite3D/SubViewport/Node2D".show()
 	ActiveBuildTower=Tower
 	FloatTower=ActiveBuildTower.instantiate()
 	add_sibling(FloatTower)
-	FloatTower.BuildCollisionArea.body_shape_entered.connect(_build_collision_started)
+	FloatTower.BuildCollisionArea.body_shape_entered.connect(build_collision_started)
 	FloatTower.BuildCollisionArea.body_shape_exited.connect(_build_collision_ended)
 
-func _build_collision_started(_body_rid: RID, body: CharacterBody3D, _body_shape_index: int, _local_shape_index: int)->void:
+func build_collision_started(_body_rid: RID, body: CharacterBody3D, _body_shape_index: int, _local_shape_index: int)->void:
 	if body!=FloatTower:
 		BuildCollisionBlock=true
 

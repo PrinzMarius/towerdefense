@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bftjfximaw6ng" path="res://CreepPathFollow.gd" id="1_03qa5"]
 [ext_resource type="Script" uid="uid://doi8df0p7l2ds" path="res://francois.gd" id="1_qfx1i"]
 [ext_resource type="PackedScene" uid="uid://boo6bxe1yac82" path="res://LoseScreen.tscn" id="2_nqjen"]
-[ext_resource type="PackedScene" uid="uid://lv8s5jyvlvlo" path="res://DamageText.tscn" id="3_buakb"]
+[ext_resource type="LabelSettings" uid="uid://kmscx7b382n0" path="res://DamageText.tres" id="4_nqjen"]
 
 [sub_resource type="Gradient" id="Gradient_qfx1i"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -86,10 +86,10 @@ LoseScreenScene = ExtResource("2_nqjen")
 script = ExtResource("1_qfx1i")
 HealthBar = NodePath("HealthBar3D/HealthBarViewport/HealthBar2D")
 Pathtrack = NodePath("..")
-DamageTextScene = ExtResource("3_buakb")
 MovementSpeed = 10
 Armor = 5
 MaxHealth = 100
+DamageLabelSettings = ExtResource("4_nqjen")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Creep"]
 transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0, 0, 0)
@@ -123,16 +123,18 @@ shape = SubResource("SphereShape3D_03qa5")
 debug_color = Color(0, 0.643137, 0.321569, 1)
 
 [node name="HealthBar3D" type="Sprite3D" parent="Creep"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15112, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47508, -0.00870619)
 billboard = 1
 texture = SubResource("ViewportTexture_nqjen")
 
 [node name="HealthBarViewport" type="SubViewport" parent="Creep/HealthBar3D"]
 transparent_bg = true
-size = Vector2i(256, 16)
+size = Vector2i(300, 70)
 
 [node name="HealthBar2D" type="TextureProgressBar" parent="Creep/HealthBar3D/HealthBarViewport"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 22.0
+offset_top = 52.0
+offset_right = 278.0
+offset_bottom = 92.0
 value = 100.0
 texture_progress = SubResource("GradientTexture2D_thoip")
