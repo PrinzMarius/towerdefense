@@ -1,9 +1,9 @@
 [gd_scene load_steps=47 format=3 uid="uid://bxnqb38hfijcx"]
 
-[ext_resource type="Material" uid="uid://bttrw7yohq1ai" path="res://EsquieArmMat.tres" id="1_7fwdf"]
-[ext_resource type="Script" uid="uid://ecnvqh252gv0" path="res://esquie.gd" id="1_au8un"]
-[ext_resource type="PackedScene" uid="uid://c5ej2uqr85x07" path="res://EsquieMissle.tscn" id="2_6kw08"]
-[ext_resource type="Script" uid="uid://d2aq00ahvkdq1" path="res://TowerStats.gd" id="4_jlbb6"]
+[ext_resource type="Material" uid="uid://bttrw7yohq1ai" path="res://Towers/Esquie/EsquieArmMat.tres" id="1_7fwdf"]
+[ext_resource type="Script" uid="uid://ecnvqh252gv0" path="res://Towers/Esquie/esquie.gd" id="1_au8un"]
+[ext_resource type="PackedScene" uid="uid://c5ej2uqr85x07" path="res://Towers/Esquie/EsquieMissle.tscn" id="2_6kw08"]
+[ext_resource type="Script" uid="uid://d2aq00ahvkdq1" path="res://Towers/TowerUI/TowerStats.gd" id="4_jlbb6"]
 
 [sub_resource type="Gradient" id="Gradient_tmwru"]
 interpolation_mode = 1
@@ -247,6 +247,7 @@ input_ray_pickable = false
 motion_mode = 1
 slide_on_ceiling = false
 script = ExtResource("1_au8un")
+Tooltip = "Build me Mon Ami!"
 BuildCollisionArea = NodePath("BuildCollisionArea3D")
 TargetingArea = NodePath("TargetingAreaSignal")
 Missle = ExtResource("2_6kw08")

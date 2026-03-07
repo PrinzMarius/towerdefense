@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bgmqpw2li06e2"]
+[gd_scene load_steps=21 format=3 uid="uid://bgmqpw2li06e2"]
 
-[ext_resource type="Script" uid="uid://bftjfximaw6ng" path="res://CreepPathFollow.gd" id="1_03qa5"]
-[ext_resource type="Script" uid="uid://doi8df0p7l2ds" path="res://francois.gd" id="1_qfx1i"]
-[ext_resource type="PackedScene" uid="uid://boo6bxe1yac82" path="res://LoseScreen.tscn" id="2_nqjen"]
-[ext_resource type="LabelSettings" uid="uid://kmscx7b382n0" path="res://DamageText.tres" id="4_nqjen"]
+[ext_resource type="Script" uid="uid://bftjfximaw6ng" path="res://Enemies/CreepPathFollow.gd" id="1_03qa5"]
+[ext_resource type="Script" uid="uid://doi8df0p7l2ds" path="res://Enemies/francois.gd" id="1_qfx1i"]
+[ext_resource type="PackedScene" uid="uid://brruapn40g5qy" path="res://Main/LoseScreen.tscn" id="2_nqjen"]
+[ext_resource type="LabelSettings" uid="uid://kmscx7b382n0" path="res://UI/DamageText.tres" id="4_nqjen"]
+[ext_resource type="Script" uid="uid://boej4b7qh8hgl" path="res://Enemies/health_bar.gd" id="5_8kete"]
 
 [sub_resource type="Gradient" id="Gradient_qfx1i"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -86,9 +87,9 @@ LoseScreenScene = ExtResource("2_nqjen")
 script = ExtResource("1_qfx1i")
 HealthBar = NodePath("HealthBar3D/HealthBarViewport/HealthBar2D")
 Pathtrack = NodePath("..")
-MovementSpeed = 10
-Armor = 5
-MaxHealth = 100
+MovementSpeed = 10.0
+Armor = 1.0
+MaxHealth = 100.0
 DamageLabelSettings = ExtResource("4_nqjen")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Creep"]
@@ -138,3 +139,4 @@ offset_right = 278.0
 offset_bottom = 92.0
 value = 100.0
 texture_progress = SubResource("GradientTexture2D_thoip")
+script = ExtResource("5_8kete")

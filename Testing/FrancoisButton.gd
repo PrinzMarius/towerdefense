@@ -1,9 +1,9 @@
 extends Button
-@onready var SpawnTimer:Timer=get_node("../../Timer/SpawnTimer")
+@onready var WaveTimer: Timer=get_node("../../Timer/WaveTimer")
 
 var stylebox: StyleBox =get_theme_stylebox("normal")
 func _toggled(toggled_on:bool)->void:
 	if toggled_on:
-		SpawnTimer.start(1)
+		WaveTimer.start(5)
 	else: 
-		SpawnTimer.stop()
+		WaveTimer.stop()

@@ -11,3 +11,6 @@ func _physics_process(_delta:float)->void:
 			var Lost:Control=LoseScreenScene.instantiate()
 			get_tree().get_current_scene().add_child(Lost)
 		queue_free()
+
+func _exit_tree() -> void:
+	GlobalFunctions.LivingCreeps-=1

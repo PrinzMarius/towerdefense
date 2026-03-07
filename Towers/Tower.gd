@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 #Preallocations
+@export var Tooltip:String
 @export var BuildCollisionArea:Area3D
 @export var TargetingArea:Area3D
 @export var Missle: PackedScene
@@ -152,6 +153,10 @@ func _enemy_entered(_body_rid: RID, body: Node3D, _body_shape_index: int, _local
 
 func _on_hit(enemy:CharacterBody3D)->void:
 	var DamageValues:Array=GlobalFunctions.damage_calc_base(AttackArray,enemy.ArmorArray)
+	if enemy.Chromatic==true:
+		var ChromaticDamage:Array=GlobalFunctions.damage_calc_base(AttackArray,[enemy.ArmorArray[0],enemy.ArmorArray[1],enemy.ChromaticArmor,enemy.ArmorArray[3]])
+		if ChromaticDamage[0]>DamageValues[0]:
+			DamageValues=ChromaticDamage
 	enemy.damage_process(self,DamageValues[0],DamageValues[3])
 
 func _show_selectionring() -> void:

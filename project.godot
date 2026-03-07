@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalFunctions="*res://global_functions.gd"
-SignalBus="*res://signal_bus.gd"
+GlobalFunctions="*res://Globals/global_functions.gd"
+SignalBus="*res://Globals/signal_bus.gd"
 
 [debug]
 

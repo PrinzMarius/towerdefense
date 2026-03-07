@@ -1,16 +1,18 @@
-[gd_scene load_steps=21 format=3 uid="uid://d1a7cng2ue88n"]
+[gd_scene load_steps=23 format=3 uid="uid://d1a7cng2ue88n"]
 
-[ext_resource type="PackedScene" uid="uid://bgmqpw2li06e2" path="res://Francois.tscn" id="1_4ubfd"]
-[ext_resource type="Script" uid="uid://dajxk70p88q6i" path="res://Main.gd" id="1_gsj67"]
-[ext_resource type="Script" uid="uid://biua3rx02omws" path="res://FrancoisButton.gd" id="3_d3qrh"]
-[ext_resource type="PackedScene" uid="uid://bxnqb38hfijcx" path="res://Esquie.tscn" id="4_gsj67"]
-[ext_resource type="Script" uid="uid://c6tfr0jbdsaxb" path="res://MainCam.gd" id="5_d3qrh"]
-[ext_resource type="Script" uid="uid://b4eyniit0qx05" path="res://Esquie_Button.gd" id="5_lneo4"]
-[ext_resource type="Script" uid="uid://cbjaf5m5xrw56" path="res://CreateGrid.gd" id="6_5n5ix"]
-[ext_resource type="Script" uid="uid://c4cmcqlsibsmt" path="res://BuildingGrid.gd" id="6_lneo4"]
-[ext_resource type="Script" uid="uid://b5i63sryewtah" path="res://tower_container.gd" id="7_uymwg"]
-[ext_resource type="PackedScene" uid="uid://bdv8fcijfxyxy" path="res://Monoco.tscn" id="8_lneo4"]
-[ext_resource type="Script" uid="uid://qryqevwmii6g" path="res://Lifebar.gd" id="9_mk6be"]
+[ext_resource type="PackedScene" uid="uid://bgmqpw2li06e2" path="res://Enemies/Francois.tscn" id="1_4ubfd"]
+[ext_resource type="Script" uid="uid://dajxk70p88q6i" path="res://Main/Main.gd" id="1_gsj67"]
+[ext_resource type="Script" uid="uid://biua3rx02omws" path="res://Testing/FrancoisButton.gd" id="3_d3qrh"]
+[ext_resource type="PackedScene" uid="uid://bxnqb38hfijcx" path="res://Towers/Esquie/Esquie.tscn" id="4_gsj67"]
+[ext_resource type="Script" uid="uid://qrf8euldhl2" path="res://TestingWaveTimerTest.gd" id="5_3u8fs"]
+[ext_resource type="Script" uid="uid://c6tfr0jbdsaxb" path="res://Main/MainCam.gd" id="5_d3qrh"]
+[ext_resource type="Script" uid="uid://b4eyniit0qx05" path="res://Towers/Esquie/Esquie_Button.gd" id="5_lneo4"]
+[ext_resource type="Script" uid="uid://cbjaf5m5xrw56" path="res://Main/CreateGrid.gd" id="6_5n5ix"]
+[ext_resource type="Script" uid="uid://clcugx4ssmpr" path="res://Testing/go_to_wave_20.gd" id="6_dvij6"]
+[ext_resource type="Script" uid="uid://c4cmcqlsibsmt" path="res://Main/BuildingGrid.gd" id="6_lneo4"]
+[ext_resource type="Script" uid="uid://b5i63sryewtah" path="res://UI/tower_container.gd" id="7_uymwg"]
+[ext_resource type="PackedScene" uid="uid://bdv8fcijfxyxy" path="res://Towers/Monoco/Monoco.tscn" id="8_lneo4"]
+[ext_resource type="Script" uid="uid://qryqevwmii6g" path="res://UI/Lifebar.gd" id="9_mk6be"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsjio"]
 diffuse_mode = 3
@@ -62,10 +64,18 @@ repeat = 1
 [sub_resource type="ViewportTexture" id="ViewportTexture_5n5ix"]
 viewport_path = NodePath("Sprite3D/SubViewport")
 
-[node name="Stage" type="Node3D"]
+[node name="Stage" type="Node3D" node_paths=PackedStringArray("SpawnTimer", "WaveTimer", "MainPath", "WaveNumberList", "WaveTypeList", "WaveArmorList", "WaveAffixList")]
 script = ExtResource("1_gsj67")
-Wave1 = ExtResource("1_4ubfd")
+SpawnTimer = NodePath("Timer/SpawnTimer")
+WaveTimer = NodePath("Timer/WaveTimer")
+MainPath = NodePath("Path3D")
+WaveNumberList = NodePath("MainUI/WaveInfoPanel/WaveInfos/Wave Number")
+WaveTypeList = NodePath("MainUI/WaveInfoPanel/WaveInfos/Type")
+WaveArmorList = NodePath("MainUI/WaveInfoPanel/WaveInfos/ArmorType")
+WaveAffixList = NodePath("MainUI/WaveInfoPanel/WaveInfos/Affixes")
+WavePath = ExtResource("1_4ubfd")
 Esquie = ExtResource("4_gsj67")
+MaxWave = 100
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -132,15 +142,38 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="FrancoisButton" type="Button" parent="TestUI"]
+[node name="StartButton" type="Button" parent="TestUI"]
 layout_mode = 0
-offset_left = 1615.0
-offset_right = 1907.0
-offset_bottom = 104.0
+offset_left = 2.0
+offset_top = 101.0
+offset_right = 294.0
+offset_bottom = 205.0
 theme_override_font_sizes/font_size = 70
 toggle_mode = true
-text = "Francois"
+text = "Game Start"
 script = ExtResource("3_d3qrh")
+
+[node name="Label" type="Label" parent="TestUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.287
+anchor_bottom = 0.287
+offset_left = 401.0
+offset_top = 93.52
+offset_right = 551.0
+offset_bottom = 190.52
+theme_override_font_sizes/font_size = 60
+text = "Wave"
+script = ExtResource("5_3u8fs")
+
+[node name="Go to Wave 20" type="Button" parent="TestUI"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 206.0
+offset_right = 180.0
+offset_bottom = 285.0
+text = "Wave 50"
+script = ExtResource("6_dvij6")
 
 [node name="Points" type="Node3D" parent="."]
 
@@ -159,6 +192,11 @@ View = NodePath("../../CamNode3D/Camera3D")
 
 [node name="SpawnTimer" type="Timer" parent="Timer"]
 process_callback = 0
+
+[node name="WaveTimer" type="Timer" parent="Timer"]
+process_callback = 0
+wait_time = 60.0
+one_shot = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.967431, 0.253133, 0, -0.253133, 0.967431, 0, 84.7143, 0)
@@ -343,6 +381,127 @@ texture_over = SubResource("GradientTexture2D_sbwno")
 texture_progress = SubResource("GradientTexture2D_1wg0b")
 script = ExtResource("9_mk6be")
 
+[node name="WaveInfoPanel" type="Panel" parent="MainUI"]
+layout_mode = 0
+offset_left = 1329.0
+offset_top = -1077.0
+offset_right = 1597.0
+offset_bottom = -909.0
+
+[node name="WaveInfos" type="GridContainer" parent="MainUI/WaveInfoPanel"]
+layout_mode = 0
+offset_right = 266.0
+offset_bottom = 167.0
+columns = 5
+
+[node name="Wave Number" type="GridContainer" parent="MainUI/WaveInfoPanel/WaveInfos"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Wave Number"]
+layout_mode = 2
+text = "Number"
+
+[node name="Number1" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Wave Number"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Number2" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Wave Number"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Number3" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Wave Number"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Number4" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Wave Number"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Number5" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Wave Number"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Type" type="GridContainer" parent="MainUI/WaveInfoPanel/WaveInfos"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Type"]
+layout_mode = 2
+text = "Type"
+
+[node name="Type1" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Type"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Type2" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Type"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Type3" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Type"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Type4" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Type"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Type5" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Type"]
+layout_mode = 2
+text = "Affix"
+
+[node name="ArmorType" type="GridContainer" parent="MainUI/WaveInfoPanel/WaveInfos"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
+layout_mode = 2
+text = "Armor Type"
+
+[node name="Armor1" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Armor2" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Armor3" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Armor4" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Armor5" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Affixes" type="GridContainer" parent="MainUI/WaveInfoPanel/WaveInfos"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Affixes"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Affix1" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Affixes"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Affix2" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Affixes"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Affix3" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Affixes"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Affix4" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Affixes"]
+layout_mode = 2
+text = "Affix"
+
+[node name="Affix5" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Affixes"]
+layout_mode = 2
+text = "Affix"
+
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.2, 0)
 pixel_size = 0.1
@@ -356,4 +515,3 @@ size = Vector2i(2570, 2570)
 script = ExtResource("6_5n5ix")
 
 [connection signal="TowerBuilt" from="Points/BuildGridPoint0" to="." method="_on_node_3d_tower_built"]
-[connection signal="timeout" from="Timer/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

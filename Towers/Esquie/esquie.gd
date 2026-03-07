@@ -1,4 +1,4 @@
-extends "res://Tower.gd"
+extends "res://Towers/Tower.gd"
 
 func _ready() -> void:
 	_initiate()

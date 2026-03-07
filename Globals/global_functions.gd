@@ -1,15 +1,14 @@
 extends Node
 #			Neutral
 # Neutral
-@onready var NeutralTable:Array=[1,1.1,1.2,1.3,1.4]
-@onready var TestTable:Array=[2,2.1,2.2,2.3,2.4]
+@onready var NeutralTable:Array=[1,1.1,1.2,1.3,1.4,1.5,1.6,1.7]
+@onready var TestTable:Array=[2,2.1,2.2,2.3,2.4,2.5,2.6,2.7]
 @onready var DamageTable:Array=[NeutralTable, TestTable]
 @onready var PlayerHealth:int=100
 @onready var buildModeOn:bool=false
-
+@onready var LivingCreeps:int=0
 func _ready() -> void:
 	SignalBus.player_damage.connect(deal_player_damage)
-	
 
 func deal_player_damage(Damage:int)->void:
 	PlayerHealth-=Damage
@@ -55,9 +54,7 @@ func damage_calc_base(AttackArray:Array,DefenseArray:Array)->Array:
 	var OverkillDamage:float=0
 	var CritDamage:float=1+float(AttackArray[2])/100
 	for ii:int in range(1,AttackArray[3]+1):
-		var CritGenerator:RandomNumberGenerator=RandomNumberGenerator.new()
-		var CritCheck:int=CritGenerator.randi_range(1,100)
-		if CritCheck<=AttackArray[1]:
+		if randi_range(1,100)<=AttackArray[1]*0.75**(ii-1):
 			CritCount+=1
 	var Damage:int=roundi((AttackArray[0]*(CritDamage**CritCount)-DefenseArray[2])*damage_table(AttackArray,DefenseArray))
 	if Damage<0:
