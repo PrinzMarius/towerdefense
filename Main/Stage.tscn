@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d1a7cng2ue88n"]
+[gd_scene load_steps=33 format=3 uid="uid://d1a7cng2ue88n"]
 
 [ext_resource type="PackedScene" uid="uid://bgmqpw2li06e2" path="res://Enemies/Francois.tscn" id="1_4ubfd"]
 [ext_resource type="Script" uid="uid://dajxk70p88q6i" path="res://Main/Main.gd" id="1_gsj67"]
@@ -10,9 +10,19 @@
 [ext_resource type="Script" uid="uid://cbjaf5m5xrw56" path="res://Main/CreateGrid.gd" id="6_5n5ix"]
 [ext_resource type="Script" uid="uid://clcugx4ssmpr" path="res://Testing/go_to_wave_20.gd" id="6_dvij6"]
 [ext_resource type="Script" uid="uid://c4cmcqlsibsmt" path="res://Main/BuildingGrid.gd" id="6_lneo4"]
+[ext_resource type="Script" uid="uid://da50wvy3tf5ff" path="res://Testing/Instant Start.gd" id="7_4oj5t"]
 [ext_resource type="Script" uid="uid://b5i63sryewtah" path="res://UI/tower_container.gd" id="7_uymwg"]
+[ext_resource type="Script" uid="uid://lk67g5y71nv2" path="res://Main/skillpointadder.gd" id="8_g0hxr"]
 [ext_resource type="PackedScene" uid="uid://bdv8fcijfxyxy" path="res://Towers/Monoco/Monoco.tscn" id="8_lneo4"]
 [ext_resource type="Script" uid="uid://qryqevwmii6g" path="res://UI/Lifebar.gd" id="9_mk6be"]
+[ext_resource type="Script" uid="uid://bs2uvf8v2kqx7" path="res://Main/SkillPointAllocator.gd" id="12_4x5a8"]
+[ext_resource type="Script" uid="uid://b8ufykwbnn4w3" path="res://Main/SkillAllocatorButton.gd" id="13_mud4j"]
+[ext_resource type="Script" uid="uid://d4k3mscv4knrm" path="res://UI/TowerPanel/TargetingPrioritySelector.gd" id="14_7lhek"]
+[ext_resource type="Script" uid="uid://bn3lcluoo3jk5" path="res://UI/TowerPanel/TowerAttackWindow.gd" id="14_b8arj"]
+[ext_resource type="Script" uid="uid://dlkwtjgs7jfdr" path="res://UI/TowerPanel/TowerCritWindow.gd" id="15_0i8x7"]
+[ext_resource type="Script" uid="uid://c87tbmqalc141" path="res://UI/TowerPanel/TowerSpellWindow.gd" id="17_iqr0b"]
+[ext_resource type="Script" uid="uid://c55guv5bkns5x" path="res://UI/TowerPanel/TowerAnalyticsWindow.gd" id="17_ues4u"]
+[ext_resource type="Script" uid="uid://cjubc6dexaj2" path="res://UI/TowerPanel/TowerMiscWindow.gd" id="18_38dxx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsjio"]
 diffuse_mode = 3
@@ -64,11 +74,13 @@ repeat = 1
 [sub_resource type="ViewportTexture" id="ViewportTexture_5n5ix"]
 viewport_path = NodePath("Sprite3D/SubViewport")
 
-[node name="Stage" type="Node3D" node_paths=PackedStringArray("SpawnTimer", "WaveTimer", "MainPath", "WaveNumberList", "WaveTypeList", "WaveArmorList", "WaveAffixList")]
+[node name="Stage" type="Node3D" node_paths=PackedStringArray("SpawnTimer", "WaveTimer", "MainPath", "TowerPanel", "WaveNumberList", "WaveTypeList", "WaveArmorList", "WaveAffixList")]
 script = ExtResource("1_gsj67")
+WaveMembers = 10
 SpawnTimer = NodePath("Timer/SpawnTimer")
 WaveTimer = NodePath("Timer/WaveTimer")
 MainPath = NodePath("Path3D")
+TowerPanel = NodePath("MainUI/TowerPanel/TowerTabPanel")
 WaveNumberList = NodePath("MainUI/WaveInfoPanel/WaveInfos/Wave Number")
 WaveTypeList = NodePath("MainUI/WaveInfoPanel/WaveInfos/Type")
 WaveArmorList = NodePath("MainUI/WaveInfoPanel/WaveInfos/ArmorType")
@@ -144,10 +156,10 @@ offset_bottom = 40.0
 
 [node name="StartButton" type="Button" parent="TestUI"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 101.0
-offset_right = 294.0
-offset_bottom = 205.0
+offset_left = 4.66199
+offset_top = 66.394
+offset_right = 394.662
+offset_bottom = 170.394
 theme_override_font_sizes/font_size = 70
 toggle_mode = true
 text = "Game Start"
@@ -159,21 +171,40 @@ anchors_preset = -1
 anchor_top = 0.287
 anchor_bottom = 0.287
 offset_left = 401.0
-offset_top = 93.52
-offset_right = 551.0
-offset_bottom = 190.52
+offset_top = 52.259
+offset_right = 559.0
+offset_bottom = 149.259
 theme_override_font_sizes/font_size = 60
 text = "Wave"
 script = ExtResource("5_3u8fs")
 
 [node name="Go to Wave 20" type="Button" parent="TestUI"]
 layout_mode = 0
-offset_left = 43.0
-offset_top = 206.0
-offset_right = 180.0
-offset_bottom = 285.0
+offset_left = 29.69
+offset_top = 171.394
+offset_right = 166.69
+offset_bottom = 250.394
 text = "Wave 50"
 script = ExtResource("6_dvij6")
+
+[node name="InstantStart" type="Button" parent="TestUI" node_paths=PackedStringArray("WaveTimer")]
+layout_mode = 0
+offset_left = 405.338
+offset_top = 167.45
+offset_right = 524.338
+offset_bottom = 218.45
+text = "Spawn now"
+script = ExtResource("7_4oj5t")
+WaveTimer = NodePath("../../Timer/WaveTimer")
+
+[node name="Skillpointadder" type="Button" parent="TestUI"]
+layout_mode = 0
+offset_left = 199.972
+offset_top = 197.986
+offset_right = 325.972
+offset_bottom = 268.986
+text = "Skillpoint+1"
+script = ExtResource("8_g0hxr")
 
 [node name="Points" type="Node3D" parent="."]
 
@@ -197,6 +228,7 @@ process_callback = 0
 process_callback = 0
 wait_time = 60.0
 one_shot = true
+autostart = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.967431, 0.253133, 0, -0.253133, 0.967431, 0, 84.7143, 0)
@@ -224,25 +256,61 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 
-[node name="TowerContainer" type="TabContainer" parent="MainUI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainUI" node_paths=PackedStringArray("TowerTabs")]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = -803.0
-offset_right = 232.0
-offset_bottom = -572.0
-grow_vertical = 2
+offset_left = 68.0
+offset_top = -800.0
+offset_right = 396.0
+offset_bottom = -537.0
 rotation = 1.5708
-current_tab = 0
+theme_override_constants/separation = 0
 script = ExtResource("7_uymwg")
+TowerTabs = NodePath("TowerTabContainer")
 
-[node name="El1" type="GridContainer" parent="MainUI/TowerContainer"]
+[node name="GridContainer" type="GridContainer" parent="MainUI/VBoxContainer"]
+show_behind_parent = true
 layout_mode = 2
-columns = 3
+theme_override_constants/h_separation = 0
+columns = 8
+script = ExtResource("12_4x5a8")
+
+[node name="HistorySep" type="Control" parent="MainUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="Hstry" type="Button" parent="MainUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 32)
+layout_mode = 2
+text = "+"
+script = ExtResource("13_mud4j")
+
+[node name="PhysicsSep" type="Control" parent="MainUI/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(45, 0)
+layout_mode = 2
+
+[node name="Physics" type="Button" parent="MainUI/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "+"
+script = ExtResource("13_mud4j")
+
+[node name="TowerTabContainer" type="TabContainer" parent="MainUI/VBoxContainer"]
+layout_mode = 2
+current_tab = 0
+
+[node name="Hstry" type="GridContainer" parent="MainUI/VBoxContainer/TowerTabContainer"]
+layout_mode = 2
+columns = 4
 metadata/_tab_index = 0
 
-[node name="EsquieButton" type="Button" parent="MainUI/TowerContainer/El1"]
+[node name="Label" type="Label" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry"]
+layout_mode = 2
+text = "History"
+
+[node name="GridContainer" type="GridContainer" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry"]
+layout_mode = 2
+columns = 4
+
+[node name="EsquieButton" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -250,65 +318,92 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "E"
 script = ExtResource("5_lneo4")
-Tower = ExtResource("4_gsj67")
+ButtonTower = ExtResource("4_gsj67")
 
-[node name="MonocoButton" type="Button" parent="MainUI/TowerContainer/El1"]
+[node name="MonocoButton" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "M"
 script = ExtResource("5_lneo4")
-Tower = ExtResource("8_lneo4")
+ButtonTower = ExtResource("8_lneo4")
 
-[node name="TestButton2" type="Button" parent="MainUI/TowerContainer/El1"]
+[node name="TestButton2" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "3"
 
-[node name="TestButton3" type="Button" parent="MainUI/TowerContainer/El1"]
+[node name="TestButton3" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "4"
 
-[node name="TestButton4" type="Button" parent="MainUI/TowerContainer/El1"]
+[node name="TestButton4" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "5"
 
-[node name="TestButton5" type="Button" parent="MainUI/TowerContainer/El1"]
+[node name="TestButton5" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "6"
 
-[node name="TestButton6" type="Button" parent="MainUI/TowerContainer/El1"]
+[node name="TestButton6" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "7"
 
-[node name="TestButton7" type="Button" parent="MainUI/TowerContainer/El1"]
+[node name="TestButton7" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "8"
 
-[node name="TestButton8" type="Button" parent="MainUI/TowerContainer/El1"]
+[node name="TestButton8" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "9"
 
-[node name="El2" type="GridContainer" parent="MainUI/TowerContainer"]
+[node name="TestButton9" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="TestButton10" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "11"
+
+[node name="TestButton11" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Hstry/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "12"
+
+[node name="Physics" type="GridContainer" parent="MainUI/VBoxContainer/TowerTabContainer"]
 visible = false
 layout_mode = 2
-columns = 3
+columns = 4
 metadata/_tab_index = 1
 
-[node name="EsquieButton" type="Button" parent="MainUI/TowerContainer/El2"]
+[node name="Label" type="Label" parent="MainUI/VBoxContainer/TowerTabContainer/Physics"]
+layout_mode = 2
+text = "Physics
+"
+
+[node name="GridContainer" type="GridContainer" parent="MainUI/VBoxContainer/TowerTabContainer/Physics"]
+layout_mode = 2
+columns = 4
+
+[node name="EsquieButton" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -316,57 +411,75 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 text = "E"
 script = ExtResource("5_lneo4")
-Tower = ExtResource("4_gsj67")
+ButtonTower = ExtResource("4_gsj67")
 
-[node name="TestButton" type="Button" parent="MainUI/TowerContainer/El2"]
+[node name="MonocoButton" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "2"
+text = "M"
 script = ExtResource("5_lneo4")
-Tower = ExtResource("4_gsj67")
+ButtonTower = ExtResource("8_lneo4")
 
-[node name="TestButton2" type="Button" parent="MainUI/TowerContainer/El2"]
+[node name="TestButton2" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "3"
 
-[node name="TestButton3" type="Button" parent="MainUI/TowerContainer/El2"]
+[node name="TestButton3" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "4"
 
-[node name="TestButton4" type="Button" parent="MainUI/TowerContainer/El2"]
+[node name="TestButton4" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "5"
 
-[node name="TestButton5" type="Button" parent="MainUI/TowerContainer/El2"]
+[node name="TestButton5" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "6"
 
-[node name="TestButton6" type="Button" parent="MainUI/TowerContainer/El2"]
+[node name="TestButton6" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "7"
 
-[node name="TestButton7" type="Button" parent="MainUI/TowerContainer/El2"]
+[node name="TestButton7" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "8"
 
-[node name="TestButton8" type="Button" parent="MainUI/TowerContainer/El2"]
+[node name="TestButton8" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "9"
+
+[node name="TestButton9" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[node name="TestButton10" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "11"
+
+[node name="TestButton11" type="Button" parent="MainUI/VBoxContainer/TowerTabContainer/Physics/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "12"
 
 [node name="Lifebar" type="TextureProgressBar" parent="MainUI"]
 texture_repeat = 1
@@ -383,9 +496,9 @@ script = ExtResource("9_mk6be")
 
 [node name="WaveInfoPanel" type="Panel" parent="MainUI"]
 layout_mode = 0
-offset_left = 1329.0
+offset_left = 1500.0
 offset_top = -1077.0
-offset_right = 1597.0
+offset_right = 1768.0
 offset_bottom = -909.0
 
 [node name="WaveInfos" type="GridContainer" parent="MainUI/WaveInfoPanel"]
@@ -458,22 +571,28 @@ text = "Armor Type"
 [node name="Armor1" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
 layout_mode = 2
 text = "Affix"
+horizontal_alignment = 1
 
 [node name="Armor2" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
 layout_mode = 2
 text = "Affix"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Armor3" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
 layout_mode = 2
 text = "Affix"
+horizontal_alignment = 1
 
 [node name="Armor4" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
 layout_mode = 2
 text = "Affix"
+horizontal_alignment = 1
 
 [node name="Armor5" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/ArmorType"]
 layout_mode = 2
 text = "Affix"
+horizontal_alignment = 1
 
 [node name="Affixes" type="GridContainer" parent="MainUI/WaveInfoPanel/WaveInfos"]
 layout_mode = 2
@@ -501,6 +620,663 @@ text = "Affix"
 [node name="Affix5" type="Label" parent="MainUI/WaveInfoPanel/WaveInfos/Affixes"]
 layout_mode = 2
 text = "Affix"
+
+[node name="TowerPanel" type="Panel" parent="MainUI"]
+layout_mode = 0
+offset_left = 1400.0
+offset_top = -250.0
+offset_right = 1869.0
+offset_bottom = -42.0
+
+[node name="TowerTabPanel" type="TabContainer" parent="MainUI/TowerPanel"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = -30.0
+offset_right = 376.0
+offset_bottom = 204.0
+current_tab = 2
+
+[node name="Attack" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 4
+metadata/_tab_index = 0
+
+[node name="AttackGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="TargetingMargin" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 6
+
+[node name="Targeting" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/TargetingMargin"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/TargetingMargin/Targeting"]
+layout_mode = 2
+text = "Targeting Priority:"
+
+[node name="TargetPriority" type="MenuButton" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/TargetingMargin/Targeting"]
+layout_mode = 2
+toggle_mode = false
+text = " "
+script = ExtResource("14_7lhek")
+
+[node name="DataMargin" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 22
+
+[node name="Data" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin"]
+layout_mode = 2
+theme_override_constants/h_separation = 14
+columns = 4
+
+[node name="Attack" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 0
+columns = 2
+script = ExtResource("14_b8arj")
+
+[node name="Texts" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Attack"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="AttackDamage" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Attack/Texts"]
+layout_mode = 2
+text = "Damage"
+
+[node name="AttackSpeed" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Attack/Texts"]
+layout_mode = 2
+text = "Speed"
+
+[node name="Multihit" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Attack/Texts"]
+layout_mode = 2
+text = "Multihit"
+
+[node name="Values" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Attack"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="AttackDamage" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Attack/Values"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="AttackSpeed" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Attack/Values"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="Multihit" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Attack/Values"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="Crit" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 0
+columns = 2
+script = ExtResource("15_0i8x7")
+
+[node name="Texts" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Crit"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="CritChance" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Crit/Texts"]
+layout_mode = 2
+text = "Crit Chance"
+
+[node name="CritDamage" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Crit/Texts"]
+layout_mode = 2
+text = "Crit Damage"
+
+[node name="MultiCrit" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Crit/Texts"]
+layout_mode = 2
+text = "Multicrit"
+
+[node name="Values" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Crit"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="CritChance" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Crit/Values"]
+layout_mode = 2
+text = "10.0 %"
+
+[node name="CritDamage" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Crit/Values"]
+layout_mode = 2
+text = "100 k%"
+
+[node name="MultiCrit" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/DataMargin/Data/Crit/Values"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="MarginLine" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 7
+
+[node name="Modifier" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid"]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 5
+
+[node name="Button3" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/Modifier"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Attack Type"
+text = "M1"
+
+[node name="Button2" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/Modifier"]
+clip_contents = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Source: Tower
+
+Adds 1 Damage to each attack"
+text = "M2"
+
+[node name="Button" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/Modifier"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Source: Item
+
+Increases Attackspeed with every hit"
+text = "M3"
+
+[node name="Button4" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/Modifier"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Attack Type"
+text = "M4"
+
+[node name="Button5" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/Modifier"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+tooltip_text = "Attack Type"
+text = "M5"
+
+[node name="Button6" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Attack/AttackGrid/Modifier"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+tooltip_text = "Attack Type"
+text = "M1"
+
+[node name="Spell" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 4
+metadata/_tab_index = 1
+
+[node name="SpellGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+script = ExtResource("17_iqr0b")
+
+[node name="TargetingMargin" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 6
+
+[node name="Targeting" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/TargetingMargin"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/TargetingMargin/Targeting"]
+layout_mode = 2
+text = "Targeting Priority:"
+
+[node name="TargetPriority" type="MenuButton" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/TargetingMargin/Targeting"]
+layout_mode = 2
+toggle_mode = false
+text = " "
+script = ExtResource("14_7lhek")
+
+[node name="DataMargin" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 58
+
+[node name="Data" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin"]
+layout_mode = 2
+theme_override_constants/h_separation = 14
+columns = 4
+
+[node name="SpellsEffs" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Texts" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/SpellsEffs"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="IntensityGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/SpellsEffs/Texts"]
+layout_mode = 2
+columns = 2
+
+[node name="IntensityName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/SpellsEffs/Texts/IntensityGrid"]
+layout_mode = 2
+text = "Intensity"
+
+[node name="Intensity" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/SpellsEffs/Texts/IntensityGrid"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="PoolGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/SpellsEffs/Texts"]
+layout_mode = 2
+theme_override_constants/h_separation = 38
+columns = 2
+
+[node name="PoolName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/SpellsEffs/Texts/PoolGrid"]
+layout_mode = 2
+text = "Pool"
+
+[node name="Pool" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/SpellsEffs/Texts/PoolGrid"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="TraceGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/SpellsEffs/Texts"]
+layout_mode = 2
+theme_override_constants/h_separation = 29
+columns = 2
+
+[node name="TraceName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/SpellsEffs/Texts/TraceGrid"]
+layout_mode = 2
+text = "Trace"
+
+[node name="Trace" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/SpellsEffs/Texts/TraceGrid"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="CDEffs" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 0
+columns = 2
+
+[node name="Texts" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/CDEffs"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="FlourishGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/CDEffs/Texts"]
+layout_mode = 2
+columns = 2
+
+[node name="FlourishName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/CDEffs/Texts/FlourishGrid"]
+layout_mode = 2
+text = "Flourish"
+
+[node name="Flourish" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/CDEffs/Texts/FlourishGrid"]
+layout_mode = 2
+text = "10.0 %"
+
+[node name="CureGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/CDEffs/Texts"]
+layout_mode = 2
+theme_override_constants/h_separation = 30
+columns = 2
+
+[node name="CureName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/CDEffs/Texts/CureGrid"]
+layout_mode = 2
+text = "Cure"
+
+[node name="Cure" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/CDEffs/Texts/CureGrid"]
+layout_mode = 2
+text = "10.0 k%"
+
+[node name="FlowGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/CDEffs/Texts"]
+layout_mode = 2
+theme_override_constants/h_separation = 31
+columns = 2
+
+[node name="FlowName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/CDEffs/Texts/FlowGrid"]
+layout_mode = 2
+text = "Flow"
+
+[node name="Flow" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/DataMargin/Data/CDEffs/Texts/FlowGrid"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="MarginLine" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 7
+
+[node name="Modifier" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 2
+columns = 5
+
+[node name="Button3" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/Modifier"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "Attack Type"
+text = "S1"
+
+[node name="Button2" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/Modifier"]
+clip_contents = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "Source: Tower
+
+Adds 1 Damage to each attack"
+text = "S2"
+
+[node name="Button" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/Modifier"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "Source: Item
+
+Increases Attackspeed with every hit"
+text = "S3"
+
+[node name="Button4" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Spell/SpellGrid/Modifier"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "Attack Type"
+text = "S4"
+
+[node name="Misc" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+metadata/_tab_index = 2
+
+[node name="MiscGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+script = ExtResource("18_38dxx")
+
+[node name="TargetingMargin" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 6
+
+[node name="Targeting" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/TargetingMargin"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/TargetingMargin/Targeting"]
+layout_mode = 2
+text = "Targeting Priority:"
+
+[node name="TargetPriority" type="MenuButton" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/TargetingMargin/Targeting"]
+layout_mode = 2
+toggle_mode = false
+text = " "
+script = ExtResource("14_7lhek")
+
+[node name="DataMargin" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 22
+
+[node name="Data" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin"]
+layout_mode = 2
+theme_override_constants/h_separation = 14
+columns = 4
+
+[node name="Items" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="InspirationGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Items"]
+layout_mode = 2
+columns = 2
+
+[node name="InspirationName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Items/InspirationGrid"]
+layout_mode = 2
+text = "Inspiration"
+
+[node name="Inspiration" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Items/InspirationGrid"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="CreativityGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Items"]
+layout_mode = 2
+columns = 2
+
+[node name="CreativtyName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Items/CreativityGrid"]
+layout_mode = 2
+text = "Creativity"
+
+[node name="Creativity" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Items/CreativityGrid"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="ConsistencyGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Items"]
+layout_mode = 2
+columns = 2
+
+[node name="ConsistencyName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Items/ConsistencyGrid"]
+layout_mode = 2
+text = "Consistency"
+
+[node name="Consistency" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Items/ConsistencyGrid"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="Misc" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="YieldGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Misc"]
+layout_mode = 2
+columns = 2
+
+[node name="YieldName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Misc/YieldGrid"]
+layout_mode = 2
+text = "Yield"
+
+[node name="Yield" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Misc/YieldGrid"]
+layout_mode = 2
+text = "10.0 %"
+
+[node name="DilligenceGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Misc"]
+layout_mode = 2
+columns = 2
+
+[node name="DilligenceName" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Misc/DilligenceGrid"]
+layout_mode = 2
+text = "Dilligence"
+
+[node name="Dilligence" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/DataMargin/Data/Misc/DilligenceGrid"]
+layout_mode = 2
+text = "100 k%"
+
+[node name="MarginLine" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 7
+
+[node name="Modifier" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid"]
+layout_mode = 2
+theme_override_constants/h_separation = 34
+theme_override_constants/v_separation = 3
+columns = 5
+
+[node name="Grade" type="Button" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/Modifier"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "Attack Type"
+theme_override_font_sizes/font_size = 40
+text = "F"
+
+[node name="Score" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Misc/MiscGrid/Modifier"]
+layout_mode = 2
+text = "Score:0/0"
+
+[node name="Analytics" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 17
+metadata/_tab_index = 3
+
+[node name="AnalyticsGrid" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Analytics"]
+layout_mode = 2
+theme_override_constants/v_separation = 0
+
+[node name="TargetingMargin" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 6
+
+[node name="Targeting" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/TargetingMargin"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/TargetingMargin/Targeting"]
+layout_mode = 2
+text = "Targeting Priority:"
+
+[node name="TargetPriority" type="MenuButton" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/TargetingMargin/Targeting"]
+layout_mode = 2
+toggle_mode = false
+text = " "
+script = ExtResource("14_7lhek")
+
+[node name="DataMargin" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+
+[node name="Data" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin"]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 0
+columns = 4
+script = ExtResource("17_ues4u")
+
+[node name="Texts" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="DPS" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Texts"]
+layout_mode = 2
+text = "DPS Real/Ø/Best"
+
+[node name="DPR" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Texts"]
+layout_mode = 2
+text = "DPR Real/Ø/Best"
+
+[node name="TotalDamage" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Texts"]
+layout_mode = 2
+text = "Total Damage"
+
+[node name="Real" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="DPS" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Real"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="DPR" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Real"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="TotalDamage" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Real"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="Average" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="DPS" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Average"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="DPR" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Average"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="Kills" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Average"]
+layout_mode = 2
+text = "Kills"
+
+[node name="Best" type="GridContainer" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data"]
+layout_mode = 2
+theme_override_constants/v_separation = 10
+
+[node name="DPS" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Best"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="DPR" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Best"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="TotalKills" type="Label" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid/DataMargin/Data/Best"]
+layout_mode = 2
+text = "10.0 k"
+
+[node name="MarginLine" type="MarginContainer" parent="MainUI/TowerPanel/TowerTabPanel/Analytics/AnalyticsGrid"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="MainUI/TowerPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="MainUI/TowerPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 2
+
+[node name="Button" type="Button" parent="MainUI/TowerPanel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="Button2" type="Button" parent="MainUI/TowerPanel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "2"
+
+[node name="Button3" type="Button" parent="MainUI/TowerPanel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "3"
+
+[node name="Button4" type="Button" parent="MainUI/TowerPanel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "4"
+
+[node name="Button5" type="Button" parent="MainUI/TowerPanel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "5"
+
+[node name="Button6" type="Button" parent="MainUI/TowerPanel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "6"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.2, 0)

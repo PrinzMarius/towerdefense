@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bgmqpw2li06e2"]
+[gd_scene load_steps=20 format=3 uid="uid://bgmqpw2li06e2"]
 
 [ext_resource type="Script" uid="uid://bftjfximaw6ng" path="res://Enemies/CreepPathFollow.gd" id="1_03qa5"]
 [ext_resource type="Script" uid="uid://doi8df0p7l2ds" path="res://Enemies/francois.gd" id="1_qfx1i"]
@@ -18,11 +18,15 @@ fill_from = Vector2(0, 0.357895)
 fill_to = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_buakb"]
+resource_local_to_scene = true
+transparency = 1
 diffuse_mode = 3
+albedo_color = Color(1, 0.988235, 1, 1)
 albedo_texture = SubResource("GradientTexture2D_03qa5")
 rim = 0.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_nqjen"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_buakb")
 radius = 1.0
 radial_segments = 6
@@ -30,18 +34,24 @@ rings = 3
 is_hemisphere = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kd8yl"]
+resource_local_to_scene = true
+transparency = 1
 diffuse_mode = 3
-albedo_color = Color(0.302626, 0.246066, 0.0730927, 1)
+albedo_color = Color(0.301961, 0.247059, 0.0745098, 0.992157)
 
 [sub_resource type="PrismMesh" id="PrismMesh_vc8x5"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_kd8yl")
 size = Vector3(0.6, 0.6, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h60vv"]
+resource_local_to_scene = true
+transparency = 1
 diffuse_mode = 3
 albedo_color = Color(0.422745, 0.347392, 0.117268, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_bdcfe"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_h60vv")
 radius = 0.175
 height = 0.125
@@ -50,15 +60,14 @@ rings = 3
 is_hemisphere = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_om7vc"]
+resource_local_to_scene = true
+transparency = 1
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_thoip"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_om7vc")
 size = Vector3(0.075, 0.1, 0.025)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_03qa5"]
-height = 10.0
-radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_03qa5"]
 radius = 1.0
@@ -87,7 +96,7 @@ LoseScreenScene = ExtResource("2_nqjen")
 script = ExtResource("1_qfx1i")
 HealthBar = NodePath("HealthBar3D/HealthBarViewport/HealthBar2D")
 Pathtrack = NodePath("..")
-MovementSpeed = 10.0
+MovementSpeed = 50.0
 Armor = 1.0
 MaxHealth = 100.0
 DamageLabelSettings = ExtResource("4_nqjen")
@@ -114,14 +123,9 @@ transform = Transform3D(0.97437, 0.224951, 0, -0.219186, 0.949396, 0.224951, 0.0
 mesh = SubResource("BoxMesh_thoip")
 skeleton = NodePath("../MeshInstance3D")
 
-[node name="TargetingShape" type="CollisionShape3D" parent="Creep"]
-transform = Transform3D(1, 0, 7.10543e-15, 0, 1, 0, -7.10543e-15, 0, 1, 0, 5, 0)
-shape = SubResource("CylinderShape3D_03qa5")
-debug_color = Color(0.945098, 0, 0.411765, 1)
-
 [node name="HitBox" type="CollisionShape3D" parent="Creep"]
 shape = SubResource("SphereShape3D_03qa5")
-debug_color = Color(0, 0.643137, 0.321569, 1)
+debug_color = Color(1, 1, 1, 1)
 
 [node name="HealthBar3D" type="Sprite3D" parent="Creep"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47508, -0.00870619)

@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalFunctions="*res://Globals/global_functions.gd"
+Constants="*res://Globals/constants.gd"
+PlayerValues="*res://player_values.gd"
 SignalBus="*res://Globals/signal_bus.gd"
 
 [debug]
@@ -31,6 +33,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
 window/size/resizable=false
+window/size/borderless=true
 window/stretch/aspect="expand"
 
 [editor_plugins]

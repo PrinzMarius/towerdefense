@@ -1,13 +1,12 @@
-extends "res://Towers/Tower.gd"
+extends Tower
 
 func _ready() -> void:
-	_initiate()
-	$TowerStats.write_tower_stats()
+	pass
 	
 func _process(delta: float) -> void:
 	stat_refresh(delta)
 	#stat_refresh(delta)
 
 func _physics_process(delta: float) -> void:
-	attack_process(delta,basic_attack)
+	attack_process(delta)
 	#attack_process(delta)

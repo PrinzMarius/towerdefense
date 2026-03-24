@@ -1,0 +1,3 @@
+extends Node
+
+enum Type{BLACK, PURPLE, BLUE, TEAL, GREEN, YELLOW, ORANGE, RED, WHITE}

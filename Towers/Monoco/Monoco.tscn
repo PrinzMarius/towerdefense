@@ -1,7 +1,6 @@
-[gd_scene load_steps=74 format=3 uid="uid://bdv8fcijfxyxy"]
+[gd_scene load_steps=70 format=3 uid="uid://bdv8fcijfxyxy"]
 
-[ext_resource type="Script" uid="uid://bx371sh1ap7qi" path="res://monoco.gd" id="1_tfdfg"]
-[ext_resource type="Script" uid="uid://d2aq00ahvkdq1" path="res://TowerStats.gd" id="4_c4ekn"]
+[ext_resource type="Script" uid="uid://bx371sh1ap7qi" path="res://Towers/Monoco/monoco.gd" id="1_tfdfg"]
 
 [sub_resource type="Gradient" id="Gradient_tmwru"]
 interpolation_mode = 1
@@ -416,32 +415,6 @@ resource_local_to_scene = true
 height = 5.0
 radius = 1.0
 
-[sub_resource type="PackedScene" id="PackedScene_jlbb6"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("Control", "Label", "offset_bottom", "size_flags_horizontal", "theme_override_font_sizes/font_size", "text", "vertical_alignment"),
-"node_count": 1,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 5, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 0),
-"variants": [59.0, 3, 20, "
-", 1],
-"version": 3
-}
-
-[sub_resource type="Gradient" id="Gradient_udlwd"]
-offsets = PackedFloat32Array(0.1, 0.868263)
-colors = PackedColorArray(0, 0, 0.356863, 0.368627, 0.192364, 0.422228, 1, 0.607843)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xloos"]
-resource_local_to_scene = true
-gradient = SubResource("Gradient_udlwd")
-width = 1000
-height = 1000
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_jlbb6"]
 size = Vector3(5, 5.78918, 5)
 
@@ -477,7 +450,7 @@ BuildCollisionArea = NodePath("BuildCollisionArea3D")
 TargetingArea = NodePath("TargetingArea")
 MissleSpawnPoint = NodePath("MissleSpawner")
 SelectionRing = NodePath("SelectionRing")
-TowerStats = NodePath("TowerStats")
+TowerStats = NodePath("")
 BaseAttackSpeed = 0.7
 AttackRange = 100
 MissleSpeed = 200
@@ -803,87 +776,6 @@ debug_color = Color(0.454756, 0.422128, 1.92523e-07, 1)
 
 [node name="MissleSpawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.33326, 4.13, -2.27859)
-
-[node name="TowerStats" type="Control" parent="." node_paths=PackedStringArray("Name1Grid", "Value1Grid", "Name2Grid", "Value2Grid", "Name3Grid", "Value3Grid", "Background")]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 140.0
-offset_right = 180.0
-offset_bottom = 40.0
-grow_horizontal = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-script = ExtResource("4_c4ekn")
-Name1Grid = NodePath("GridContainer2/GridAttackDamage/Names1")
-Value1Grid = NodePath("GridContainer2/GridAttackDamage/Values1Container")
-Name2Grid = NodePath("GridContainer2/GridSpell/Names2")
-Value2Grid = NodePath("GridContainer2/GridSpell/Values2Container")
-Name3Grid = NodePath("GridContainer2/GridDocs/Names3")
-Value3Grid = NodePath("GridContainer2/GridDocs/Values3Container")
-LabelScene = SubResource("PackedScene_jlbb6")
-Background = NodePath("Background")
-
-[node name="GridContainer2" type="GridContainer" parent="TowerStats"]
-layout_mode = 2
-offset_top = 4.0
-offset_bottom = 4.0
-columns = 3
-
-[node name="GridAttackDamage" type="GridContainer" parent="TowerStats/GridContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-columns = 3
-
-[node name="Names1" type="GridContainer" parent="TowerStats/GridContainer2/GridAttackDamage"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Values1Container" type="GridContainer" parent="TowerStats/GridContainer2/GridAttackDamage"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="GridSpell" type="GridContainer" parent="TowerStats/GridContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 3
-
-[node name="Names2" type="GridContainer" parent="TowerStats/GridContainer2/GridSpell"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Values2Container" type="GridContainer" parent="TowerStats/GridContainer2/GridSpell"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="GridDocs" type="GridContainer" parent="TowerStats/GridContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-columns = 3
-
-[node name="Names3" type="GridContainer" parent="TowerStats/GridContainer2/GridDocs"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Values3Container" type="GridContainer" parent="TowerStats/GridContainer2/GridDocs"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Background" type="Sprite2D" parent="TowerStats"]
-show_behind_parent = true
-light_mask = 2
-visibility_layer = 2
-position = Vector2(-16, 13)
-texture = SubResource("GradientTexture2D_xloos")
 
 [node name="BuildCollisionArea3D" type="Area3D" parent="."]
 

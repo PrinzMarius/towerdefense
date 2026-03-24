@@ -57,10 +57,10 @@ func _build_mode_end()->void:
 	$"../../Sprite3D/SubViewport/Node2D".hide()
 	
 	
-func _build_mode_start(Tower:PackedScene) -> void:
+func _build_mode_start(BuildTower:PackedScene) -> void:
 	buildModeOn=true
 	$"../../Sprite3D/SubViewport/Node2D".show()
-	ActiveBuildTower=Tower
+	ActiveBuildTower=BuildTower
 	FloatTower=ActiveBuildTower.instantiate()
 	add_sibling(FloatTower)
 	FloatTower.BuildCollisionArea.body_shape_entered.connect(build_collision_started)

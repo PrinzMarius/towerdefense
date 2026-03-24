@@ -4,7 +4,6 @@ extends CharacterBody3D
 @export var HitBox: CollisionShape3D
 @onready var tower:CharacterBody3D=get_parent()
 @onready var target:CharacterBody3D=tower.target
-@onready var AttackArray:Array=tower.AttackArray
 var missle_direction: Vector3
 var last_position:Vector3
 signal hit(target:CharacterBody3D)
@@ -24,7 +23,12 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_hit(_body_rid: RID, body: Node3D, _body_shape_index: int, _local_shape_index: int) -> void:
-	if body==target:
-		if body.is_killed==false:
-			hit.emit(target)
-		queue_free()
+	if body!=target:
+		return
+	if body.is_killed:
+		return
+	randomize()
+	if randi_range(1,100)>body.Dodge:
+		print("hit")
+		hit.emit(target)
+	queue_free()
